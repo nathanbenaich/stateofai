@@ -1,0 +1,25 @@
+html {
+  background-color: #154ee3ff !important;
+}
+body {
+  font-family: 'PT Sans', sans-serif;
+}
+.section {
+  height: 100vh;
+}
+.middle {
+  text-align: center;
+  padding-top: 33vh;
+}
+.is-as {
+  background-color: #154ee3ff !important;
+}
+.as-title {
+  font-weight: 800;
+  font-size: 3rem;
+  margin-bottom: 30px !important;
+}
+.footer {
+ background-color: #154ee3ff !important;
+ padding: 13.37px 0;
+}
