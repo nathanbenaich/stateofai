@@ -19,7 +19,13 @@ body {
   font-size: 3rem;
   margin-bottom: 30px !important;
 }
-.footer {
+.footer1 {
  background-color: #154ee3ff !important;
  padding: 13.37px 0;
 }
+.footer2 {
+ background-color: #154ee3ff !important;
+ padding: 10px 10px;
+ font-size: 0.8rem;
+}
+
