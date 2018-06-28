@@ -4,6 +4,9 @@ html {
 body {
   font-family: 'PT Sans', sans-serif;
 }
+.main {
+    max-width: 500px;
+}
 .section {
   height: 100vh;
 }
@@ -13,6 +16,10 @@ body {
 }
 .is-as {
   background-color: #154ee3ff !important;
+}
+.subtext {
+    margin: 20px 0;
+    font-size: 1.00rem;
 }
 .as-title {
   font-weight: 800;
@@ -28,4 +35,6 @@ body {
  padding: 10px 10px;
  font-size: 0.8rem;
 }
-
+.footer-link{
+  text-decoration: underline;
+}
