@@ -4,8 +4,23 @@ html {
 body {
   font-family: 'PT Sans', sans-serif;
 }
+ol {
+  text-align: left;
+}
+ol > li {
+  list-style-type: disc;
+  list-style-position: inside;
+  text-indent: -1.37em;
+  padding-left: 1em;
+}
+
+/*iframe {
+  max-width: 100% !important;
+  width: auto !important;
+  height: auto !important;
+}*/
 .main {
-    max-width: 500px;
+    max-width: 600px;
 }
 .section {
   height: 100vh;
@@ -20,6 +35,10 @@ body {
 .subtext {
     margin: 20px 0;
     font-size: 1.00rem;
+    text-align: left;
+}
+.report {
+  margin-top: 20px;
 }
 .as-title {
   font-weight: 800;
