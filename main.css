@@ -113,3 +113,28 @@ iframe {
   color: #ffffff;
   border-color: #ffffff;
 }
+
+/* code below is for revue newsletter signup */
+
+.revue-form-group {
+  padding-bottom: 10px;
+  display: inline-block;
+  font-size: 1.1rem;
+}
+.revue-form-actions {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 1rem;
+}
+.button-email {
+  background-color: #FF8C00;
+  color: #000000;
+  border-color: #ffffff;
+  height:1.9em;
+  border-width: 1px;
+  justify-content: center;
+  font-size: 1rem;
+}
+.input {
+  font-size: 1rem; 
+}
