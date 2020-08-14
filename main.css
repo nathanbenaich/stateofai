@@ -3,6 +3,7 @@ html {
 }
 body {
   font-family: 'PT Sans', sans-serif;
+  font-size: 1.1em;
 }
 
 ol {
@@ -30,7 +31,7 @@ a {
   height: auto !important;
 }*/
 .main {
-    max-width: 600px;
+    max-width: 800px;
 }
 .section {
   height: 100vh;
@@ -112,6 +113,7 @@ iframe {
   background-color: #161E59;
   color: #ffffff;
   border-color: #ffffff;
+  font-size: 1.1em;
 }
 
 /* code below is for revue newsletter signup */
