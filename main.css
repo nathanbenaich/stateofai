@@ -48,7 +48,7 @@ a {
 }
 .subtext {
     margin: 20px 0 0 0;
-    font-size: 1.00rem;
+    font-size: 1.10em;
     text-align: left;
 }
 
@@ -107,6 +107,7 @@ iframe {
   float: left;
   margin-left: 10px;
   padding-top: 10px;
+  font-size: 1.02rem;
 }
 
 .button {
