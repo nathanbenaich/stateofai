@@ -24,7 +24,7 @@ ol > li {
 
 
 a {
-  text-decoration: underline !important;
+  text-decoration: underline;
 }
 
 /*iframe {
@@ -142,4 +142,9 @@ iframe {
 }
 .input {
   font-size: 1rem; 
+}
+
+.title {
+  line-height: 1;
+  margin-bottom: -10px;
 }
