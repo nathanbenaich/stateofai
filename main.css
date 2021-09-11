@@ -148,3 +148,11 @@ iframe {
   line-height: 1;
   margin-bottom: -10px;
 }
+
+.revue-form-group {
+  font-size: 1.1em;
+}
+
+.revue-form-field {
+  font-size: 0.9em;
+}
