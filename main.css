@@ -60,14 +60,14 @@ a {
   text-align: left; 
   margin-bottom: 5px; 
   width: 100%;
+  line-height: 1;
 }
 .graph-head .graph-title {
-  float: left
+  display: block
 }
 .graph-head .graph-date {
-  font-size: 10px; 
-  float: right; 
-  padding-top: 10px;
+  font-size: 12px; 
+  margin-top: -10px
 }
 .graph-notes {
   font-size: 12px;
