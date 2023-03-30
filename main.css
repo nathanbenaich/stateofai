@@ -53,12 +53,36 @@ a {
     font-size: 1.10em;
     text-align: left;
 }
+.graph {
+  padding: 20px 0;
+}
+.graph-head {
+  text-align: left; 
+  margin-bottom: 5px; 
+  width: 100%;
+}
+.graph-head .graph-title {
+  float: left
+}
+.graph-head .graph-date {
+  font-size: 10px; 
+  float: right; 
+  padding-top: 10px;
+}
+.graph-notes {
+  font-size: 12px;
+  padding: 5px 5px;
+  text-align: left;
+}
+.clear {
+  clear:both
+}
 
 .report {
   position: relative;
   overflow: hidden;
   padding-top: 56.25%;
-  margin-top: 30px;
+  margin-top: 10px;
 }
 iframe {
   position: absolute;
