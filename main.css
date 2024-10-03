@@ -1,3 +1,9 @@
+body * { 
+    -webkit-font-smoothing: subpixel-antialiased !important; 
+    text-rendering:optimizeLegibility !important;
+}
+
+
 html {
   background-color: #F8FAF9 !important;
 }
