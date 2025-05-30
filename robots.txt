@@ -1,0 +1,4 @@
+User-agent: *
+
+Sitemap: https://www.stateof.ai/sitemap.xml
+llms: https://www.stateof.ai/llms.txt

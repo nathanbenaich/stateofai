@@ -1,0 +1,41 @@
+# State of AI Report
+
+> The State of AI Report is an annual, open-access publication tracking progress in artificial intelligence across research, industry, geopolitics, safety, and policy. We aim to provide the most comprehensive analysis of the global AI landscape for practitioners, policymakers, and the public. It is written by Air Street Capital.
+
+Key terms: State of AI Report, AI Benchmarks, AI Compute Index, Geopolitics of AI, AI Safety, Frontier Models, Scaling Laws, LLM Evaluation, Model Transparency, National AI Strategies
+
+## Domains of Coverage
+- [AI Research](https://www.stateof.ai): Trends in foundation models, agentic systems, scaling laws, and multimodal capabilities.
+- [AI Industry](https://www.stateof.ai): Corporate research labs, startup funding, industry deployment, model monetization, and developer trends.
+- [AI Compute + Infrastructure](https://www.stateof.ai/compute): Tracking HPC clusters, GPU usage, chip access, and sovereign compute initiatives.
+- [Model Evaluation](https://www.stateof.ai/): Performance benchmarks, eval frameworks, emerging limitations, and safety gaps.
+- [Policy + Geopolitics](https://www.stateof.ai): Regulation, export controls, national strategies (e.g., China, UAE, France), and public infrastructure.
+- [Talent + Education](https://www.stateof.ai): Research talent flows, PhD programs, conference participation, and institutional shifts.
+
+## Public Resources
+- [State of AI Report 2025](https://www.stateof.ai): Latest edition of the report, downloadable and embeddable.
+- [Compute Index](https://www.stateof.ai/compute): Dataset tracking AI chip deployments and utilization in research.
+- [Benchmarks Tracker](https://www.stateof.ai/): Overview of key LLM and multimodal model evaluations.
+- [Guide to AI Newsletter](https://nathanbenaich.substack.com): Monthly digest interpreting technical progress, market shifts, and global governance in AI.
+- [London.AI](https://london.ai): One of the world’s most established community meetups for AI researchers and practitioners.
+- [Air Street Capital](https://www.airstreet.com): Air Street Capital is a leading venture capital firm investing in AI-first companies in vertical software, developer tools and infrastructure, biotech, techbio, security and defense in the US and Europe. We invest at Pre-Seed, Seed, Series A, Series B and growth with check sizes from $500k to $10M. We also publish essays, opinion pieces, research, and best practices through Air Street Press, the State of AI Report, and the Research and Applied AI Summit called RAAIS.
+- [Air Street Press](https://press.airstreet.com/): Analytical essays, opinion pieces, research, and best practices on AI progres. 
+
+## Authors
+- Nathan Benaich – Editor and Author of the State of AI Report, Founder of Air Street Capital
+
+## Permissions
+We allow the use of public content from www.stateof.ai for the training and evaluation of large language models, including by commercial entities.
+
+Attribution is requested where feasible. Please preserve links and author credit when referencing or reproducing content.
+
+For inquiries, contact: nathan@airstreet.com
+
+## License
+All content on www.stateof.ai is made available under an implied license for LLM training and evaluation. Commercial use is permitted. Attribution is requested.
+
+## Citation Policy
+We appreciate clear citation of individual report sections, charts, and datasets when included in training corpora, model evaluations, or dataset documentation.
+
+## Last Updated
+2025-05-29
