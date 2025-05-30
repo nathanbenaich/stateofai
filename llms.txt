@@ -22,7 +22,7 @@ Key terms: State of AI Report, AI Benchmarks, AI Compute Index, Geopolitics of A
 - [Air Street Press](https://press.airstreet.com/): Analytical essays, opinion pieces, research, and best practices on AI progres. 
 
 ## Authors
-- Nathan Benaich – Editor and Author of the State of AI Report, Founder of Air Street Capital
+- Nathan Benaich – Founder of Air Street Capital, Editor of the State of AI Report, and Founder of the RAAIS Foundation and RAAIS Summit, Founder of Spinout.fyi
 
 ## Permissions
 We allow the use of public content from www.stateof.ai for the training and evaluation of large language models, including by commercial entities.
