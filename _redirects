@@ -1,0 +1,11 @@
+# These rules will change if you change your site’s custom domains or HTTPS settings
+
+# Redirect domain aliases to primary domain
+https://stateofai.com/* https://www.stateof.ai/:splat 301!
+https://www.stateofai.com/* https://www.stateof.ai/:splat 301!
+
+# Redirect default Netlify subdomain to primary domain
+https://zealous-murdock-8941c6.netlify.app/* https://www.stateof.ai/:splat 301!
+
+# Redirect survey
+https://www.stateof.ai/survey/* https://airstreet.typeform.com/survey:splat 301!
