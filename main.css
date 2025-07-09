@@ -1,3 +1,18 @@
+.announcement {
+    background-color: #161E59 !important;
+    position: center;
+    text-align: center;
+    padding: 10px 5px;
+    top: 0px;
+    font-size: 24px;
+    color: #ffffff !important;
+
+}
+
+.announcement a {
+  color: #ffffff !important;
+}
+
 body * { 
     -webkit-font-smoothing: subpixel-antialiased !important; 
     text-rendering:optimizeLegibility !important;
