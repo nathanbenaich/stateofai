@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="">
+<html class="no-js" lang="en">
     <head>
         <script type="application/ld+json">
         {
@@ -7,50 +7,71 @@
           "@graph": [
             {
               "@type": "WebSite",
-              "@id": "https://www.stateof.ai/2022#website",
+              "@id": "https://www.stateof.ai/#website",
               "url": "https://www.stateof.ai/",
               "name": "State of AI Report",
-              "publisher": {
-                "@type": "Organization",
-                "name": "Air Street Capital",
-                "url": "https://www.airstreet.com/"
-              }
+              "description": "The most widely read and trusted independent annual report on global progress in artificial intelligence.",
+              "publisher": { "@id": "https://www.stateof.ai/#organization" }
+            },
+            {
+              "@type": "Organization",
+              "@id": "https://www.stateof.ai/#organization",
+              "name": "Air Street Capital",
+              "url": "https://www.airstreet.com/",
+              "description": "Air Street Capital is a venture capital firm investing in AI-first technology companies across vertical software, developer tools, infrastructure, biotech, techbio, security, and defense in the US and Europe.",
+              "founder": { "@id": "https://www.stateof.ai/#person-nathan" },
+              "knowsAbout": ["artificial intelligence", "machine learning", "venture capital", "AI-first companies", "deep tech investing"],
+              "sameAs": ["https://www.airstreet.com/", "https://x.com/airstreet", "https://www.linkedin.com/company/airstreetcapital/", "https://press.airstreet.com/"]
+            },
+            {
+              "@type": "Person",
+              "@id": "https://www.stateof.ai/#person-nathan",
+              "name": "Nathan Benaich",
+              "url": "https://www.nathanbenaich.com/",
+              "jobTitle": "Founder and General Partner",
+              "worksFor": { "@id": "https://www.stateof.ai/#organization" },
+              "description": "Nathan Benaich is the founder of Air Street Capital and creator of the State of AI Report, the RAAIS Foundation, London.AI, and Spinout.fyi.",
+              "knowsAbout": ["artificial intelligence", "machine learning", "AI investment", "AI market analysis", "venture capital", "AI research trends", "frontier AI models"],
+              "sameAs": ["https://www.nathanbenaich.com/", "https://x.com/nathanbenaich", "https://www.linkedin.com/in/nathanbenaich/"]
             },
             {
               "@type": "CreativeWorkSeries",
-              "@id": "https://www.stateof.ai/2022#series",
+              "@id": "https://www.stateof.ai/#series",
               "name": "State of AI Report",
-              "description": "The most widely read and trusted independent annual report on global progress in artificial intelligence, covering research, industry, geopolitics, and AI safety.",
+              "description": "The most widely read and trusted independent annual report on global progress in artificial intelligence, covering research, industry, geopolitics, and AI safety. Published annually since 2018.",
               "inLanguage": "en",
               "startDate": "2018-01-01",
+              "url": "https://www.stateof.ai/",
+              "creator": { "@id": "https://www.stateof.ai/#person-nathan" },
+              "publisher": { "@id": "https://www.stateof.ai/#organization" },
+              "license": "https://creativecommons.org/licenses/by/4.0/",
+              "keywords": ["State of AI", "State of AI Report", "best AI report", "annual AI report", "comprehensive AI analysis", "artificial intelligence", "machine learning", "deep learning", "generative AI", "AI research", "AI industry", "AI geopolitics", "AI safety", "AI trends", "AI predictions", "AI market analysis", "frontier AI models", "AI venture capital", "Nathan Benaich", "Air Street Capital"],
+              "sameAs": ["https://x.com/stateofai", "https://www.linkedin.com/company/stateofai/", "https://press.airstreet.com/", "https://www.airstreet.com/"]
+            },
+            {
+              "@type": "Report",
+              "@id": "https://www.stateof.ai/2022#report",
+              "name": "State of AI Report 2022",
+              "headline": "State of AI Report 2022",
+              "description": "The fifth annual State of AI Report. Key findings: independent labs rapidly open-source major lab output, AI safety gains awareness with ~300 researchers at large labs, China-US AI research gap widens, AI-driven scientific breakthroughs continue but methodological concerns grow.",
               "url": "https://www.stateof.ai/2022",
-              "creator": {
-                "@type": "Person",
-                "name": "Nathan Benaich",
-                "url": "https://www.nathanbenaich.com/"
-              },
-              "publisher": {
-                "@type": "Organization",
-                "name": "Air Street Capital",
-                "url": "https://www.airstreet.com/"
-              },
-              "keywords": [
-                "State of AI",
-                "State of AI Report",
-                "artificial intelligence",
-                "machine learning",
-                "deep learning",
-                "generative AI",
-                "AI research",
-                "AI industry",
-                "AI geopolitics",
-                "AI safety"
+              "datePublished": "2022-10-11",
+              "inLanguage": "en",
+              "isPartOf": { "@id": "https://www.stateof.ai/#series" },
+              "author": [
+                { "@id": "https://www.stateof.ai/#person-nathan" },
+                { "@type": "Person", "name": "Ian Hogarth" }
               ],
-              "sameAs": [
-                "https://x.com/stateofai",
-                "https://www.linkedin.com/company/stateofai/",
-                "https://press.airstreet.com/",
-                "https://www.airstreet.com/"
+              "publisher": { "@id": "https://www.stateof.ai/#organization" },
+              "license": "https://creativecommons.org/licenses/by/4.0/",
+              "keywords": ["State of AI Report 2022", "AI trends 2022", "open source AI", "AI safety researchers", "China US AI gap", "AI science"]
+            },
+            {
+              "@type": "BreadcrumbList",
+              "@id": "https://www.stateof.ai/2022#breadcrumb",
+              "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "State of AI Report", "item": "https://www.stateof.ai/" },
+                { "@type": "ListItem", "position": 2, "name": "2022 Edition", "item": "https://www.stateof.ai/2022" }
               ]
             }
           ]
@@ -95,7 +116,7 @@
         <meta property="twitter:description" content="The State of AI Report analyses the most interesting developments in AI. Read and download here." />
         <meta property="twitter:image" content="https://www.stateof.ai/2022-report.png" />
         <!-- for linkedin -->
-        <meta property="og:url" content="https://www.stateof.ai/" />
+        <meta property="og:url" content="https://www.stateof.ai/2022" />
         <meta property="og:title" content="State of AI Report 2022" />
         <meta property="og:description" content="The State of AI Report analyses the most interesting developments in AI. Read and download here." />
         <meta property="og:image" content="https://www.stateof.ai/2022-report.png">
@@ -115,16 +136,10 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NWC2HDM"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
+    <main><article>
         <!--[if lte IE 9]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
         <![endif]-->
-        <!-- <div class="section">
-            <div class="columns is-vcentered">
-                <div class="column middle">
-                    <p>Nothing to see here. Good bye!</p>
-                </div>
-            </div>
-        </div> -->
 
 <!-- ANNOUNCEMENT BAR -->
 
@@ -203,12 +218,14 @@
 
               <hr/>
 
+              <nav aria-label="Report archive">
               <a href="https://www.stateof.ai/2024" class="button">2024 Edition</a>
               <a href="https://www.stateof.ai/2021" class="button">2021 Edition</a>
               <a href="https://www.stateof.ai/2020" class="button">2020 Edition</a>
               <a href="https://www.stateof.ai/2019" class="button">2019 Edition</a>
               <a href="https://www.stateof.ai/2018" class="button">2018 Edition</a>
               <a href="https://www.stateof.ai/compute" class="button">Compute Index</a>
+              </nav>
 
 
               <p class="subtext">
@@ -238,5 +255,6 @@
             </div>
           </div>
         </section>
+    </article></main>
     </body>
 </html>

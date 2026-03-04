@@ -1,54 +1,111 @@
-<?xml version="1.0" encoding="UTF-8"?> 
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"> 
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
   <loc>https://www.stateof.ai/</loc>
-</url>
-<url>
-  <loc>https://www.stateof.ai/compute</loc>
-</url>
-<url>
-  <loc>https://www.stateof.ai/2024</loc>
-</url>
-<url>
-  <loc>https://www.stateof.ai/2023</loc>
-</url>
-<url>
-  <loc>https://www.stateof.ai/2022</loc>
-</url>
-<url>
-  <loc>https://www.stateof.ai/2021</loc>
-</url>
-<url>
-  <loc>https://www.stateof.ai/2020</loc>
-</url>
-<url>
-  <loc>https://www.stateof.ai/2019</loc>
-</url>
-<url>
-  <loc>https://www.stateof.ai/2018</loc>
+  <lastmod>2025-10-09</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>1.0</priority>
 </url>
 <url>
   <loc>https://www.stateof.ai/about</loc>
+  <lastmod>2025-10-09</lastmod>
+  <changefreq>yearly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://www.stateof.ai/compute</loc>
+  <lastmod>2025-10-09</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://www.stateof.ai/2025</loc>
+  <lastmod>2025-10-09</lastmod>
+  <changefreq>yearly</changefreq>
+  <priority>0.9</priority>
+</url>
+<url>
+  <loc>https://www.stateof.ai/2024</loc>
+  <lastmod>2024-10-10</lastmod>
+  <changefreq>yearly</changefreq>
+  <priority>0.7</priority>
+</url>
+<url>
+  <loc>https://www.stateof.ai/2023</loc>
+  <lastmod>2023-10-12</lastmod>
+  <changefreq>yearly</changefreq>
+  <priority>0.6</priority>
+</url>
+<url>
+  <loc>https://www.stateof.ai/2022</loc>
+  <lastmod>2022-10-11</lastmod>
+  <changefreq>yearly</changefreq>
+  <priority>0.6</priority>
+</url>
+<url>
+  <loc>https://www.stateof.ai/2021</loc>
+  <lastmod>2021-10-12</lastmod>
+  <changefreq>yearly</changefreq>
+  <priority>0.6</priority>
+</url>
+<url>
+  <loc>https://www.stateof.ai/2020</loc>
+  <lastmod>2020-10-01</lastmod>
+  <changefreq>yearly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://www.stateof.ai/2019</loc>
+  <lastmod>2019-06-28</lastmod>
+  <changefreq>yearly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://www.stateof.ai/2018</loc>
+  <lastmod>2018-06-29</lastmod>
+  <changefreq>yearly</changefreq>
+  <priority>0.5</priority>
 </url>
 <url>
   <loc>https://www.stateof.ai/2024-report-launch</loc>
+  <lastmod>2024-10-10</lastmod>
+  <changefreq>yearly</changefreq>
+  <priority>0.5</priority>
 </url>
 <url>
   <loc>https://www.stateof.ai/2023-report-launch</loc>
+  <lastmod>2023-10-12</lastmod>
+  <changefreq>yearly</changefreq>
+  <priority>0.5</priority>
 </url>
 <url>
   <loc>https://www.stateof.ai/2022-report-launch</loc>
+  <lastmod>2022-10-11</lastmod>
+  <changefreq>yearly</changefreq>
+  <priority>0.5</priority>
 </url>
 <url>
   <loc>https://www.stateof.ai/2021-report-launch</loc>
+  <lastmod>2021-10-12</lastmod>
+  <changefreq>yearly</changefreq>
+  <priority>0.5</priority>
 </url>
 <url>
   <loc>https://www.stateof.ai/2020-report-launch</loc>
+  <lastmod>2020-10-01</lastmod>
+  <changefreq>yearly</changefreq>
+  <priority>0.5</priority>
 </url>
 <url>
   <loc>https://www.stateof.ai/2019-report-launch</loc>
+  <lastmod>2019-06-28</lastmod>
+  <changefreq>yearly</changefreq>
+  <priority>0.5</priority>
 </url>
 <url>
   <loc>https://www.stateof.ai/2018-report-launch</loc>
+  <lastmod>2018-06-29</lastmod>
+  <changefreq>yearly</changefreq>
+  <priority>0.5</priority>
 </url>
 </urlset>

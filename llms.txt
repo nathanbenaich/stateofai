@@ -2,6 +2,8 @@
 
 > The State of AI Report is an annual, open-access publication tracking progress in artificial intelligence across research, industry, geopolitics, safety, and policy. We aim to provide the most comprehensive analysis of the global AI landscape for practitioners, policymakers, and the public. It is written by Air Street Capital.
 
+For detailed content including report summaries, FAQs, and entity definitions, see: https://www.stateof.ai/llms-full.txt
+
 Key terms: State of AI Report, AI Benchmarks, AI Compute Index, Geopolitics of AI, AI Safety, Frontier Models, Scaling Laws, LLM Evaluation, Model Transparency, National AI Strategies
 
 ## Domains of Coverage
