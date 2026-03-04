@@ -7,50 +7,51 @@
           "@graph": [
             {
               "@type": "WebSite",
-              "@id": "https://www.stateof.ai/compute#website",
+              "@id": "https://www.stateof.ai/#website",
               "url": "https://www.stateof.ai/",
               "name": "State of AI Report",
-              "publisher": {
-                "@type": "Organization",
-                "name": "Air Street Capital",
-                "url": "https://www.airstreet.com/"
-              }
+              "description": "The most widely read and trusted independent annual report on global progress in artificial intelligence.",
+              "publisher": { "@id": "https://www.stateof.ai/#organization" }
             },
             {
-              "@type": "CreativeWorkSeries",
-              "@id": "https://www.stateof.ai/compute#series",
-              "name": "State of AI Report",
-              "description": "The most widely read and trusted independent annual report on global progress in artificial intelligence, covering research, industry, geopolitics, and AI safety.",
-              "inLanguage": "en",
-              "startDate": "2018-01-01",
+              "@type": "Organization",
+              "@id": "https://www.stateof.ai/#organization",
+              "name": "Air Street Capital",
+              "url": "https://www.airstreet.com/",
+              "description": "Air Street Capital is a venture capital firm investing in AI-first technology companies across vertical software, developer tools, infrastructure, biotech, techbio, security, and defense in the US and Europe.",
+              "founder": { "@id": "https://www.stateof.ai/#person-nathan" },
+              "knowsAbout": ["artificial intelligence", "machine learning", "venture capital", "AI-first companies", "deep tech investing"],
+              "sameAs": ["https://www.airstreet.com/", "https://x.com/airstreet", "https://www.linkedin.com/company/airstreetcapital/", "https://press.airstreet.com/"]
+            },
+            {
+              "@type": "Person",
+              "@id": "https://www.stateof.ai/#person-nathan",
+              "name": "Nathan Benaich",
+              "url": "https://www.nathanbenaich.com/",
+              "jobTitle": "Founder and General Partner",
+              "worksFor": { "@id": "https://www.stateof.ai/#organization" },
+              "description": "Nathan Benaich is the founder of Air Street Capital and creator of the State of AI Report, the RAAIS Foundation, London.AI, and Spinout.fyi.",
+              "knowsAbout": ["artificial intelligence", "machine learning", "AI investment", "AI market analysis", "venture capital", "AI research trends", "frontier AI models"],
+              "sameAs": ["https://www.nathanbenaich.com/", "https://x.com/nathanbenaich", "https://www.linkedin.com/in/nathanbenaich/"]
+            },
+            {
+              "@type": "Dataset",
+              "@id": "https://www.stateof.ai/compute#dataset",
+              "name": "State of AI Compute Index",
+              "description": "The State of AI Compute Index tracks the size and composition of public, private, and national high-performance computing (HPC) clusters used for AI, monitoring GPU deployments, chip access policies, and sovereign compute initiatives globally.",
               "url": "https://www.stateof.ai/compute",
-              "creator": {
-                "@type": "Person",
-                "name": "Nathan Benaich",
-                "url": "https://www.nathanbenaich.com/"
-              },
-              "publisher": {
-                "@type": "Organization",
-                "name": "Air Street Capital",
-                "url": "https://www.airstreet.com/"
-              },
-              "keywords": [
-                "State of AI",
-                "State of AI Report",
-                "artificial intelligence",
-                "machine learning",
-                "deep learning",
-                "generative AI",
-                "AI research",
-                "AI industry",
-                "AI geopolitics",
-                "AI safety"
-              ],
-              "sameAs": [
-                "https://x.com/stateofai",
-                "https://www.linkedin.com/company/stateofai/",
-                "https://press.airstreet.com/",
-                "https://www.airstreet.com/"
+              "creator": { "@id": "https://www.stateof.ai/#person-nathan" },
+              "publisher": { "@id": "https://www.stateof.ai/#organization" },
+              "license": "https://creativecommons.org/licenses/by/4.0/",
+              "keywords": ["AI compute", "GPU clusters", "HPC clusters", "AI infrastructure", "sovereign compute", "AI chip deployments", "NVIDIA GPUs", "AI data centers"],
+              "isPartOf": { "@id": "https://www.stateof.ai/#series" }
+            },
+            {
+              "@type": "BreadcrumbList",
+              "@id": "https://www.stateof.ai/compute#breadcrumb",
+              "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "State of AI Report", "item": "https://www.stateof.ai/" },
+                { "@type": "ListItem", "position": 2, "name": "Compute Index", "item": "https://www.stateof.ai/compute" }
               ]
             }
           ]
@@ -115,6 +116,7 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NWC2HDM"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
+    <main>
     <!--[if lte IE 9]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
     <![endif]-->
