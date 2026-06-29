@@ -49,15 +49,17 @@
   function cv(slug){return document.getElementById('chart-'+slug);}
   function closeMenus(){var m=document.querySelectorAll('.chart-menu');for(var i=0;i<m.length;i++)m[i].remove();}
   function chartTitle(tools){var g=tools&&tools.closest('.graph');var t=g&&g.querySelector('.graph-title');return t?t.textContent.trim():'State of AI Report Compute Index';}
-  function drawExport(slug,title){
+  function chartDate(tools){var g=tools&&tools.closest('.graph');var d=g&&g.querySelector('.graph-date');return d?d.textContent.trim():'';}
+  function drawExport(slug,title,date){
     var c=cv(slug); if(!c)return;
-    var W=c.width, H=c.height, m=Math.round(W*0.022), titleH=Math.round(W*0.06), footH=Math.round(W*0.058);
+    var W=c.width, H=c.height, m=Math.round(W*0.022), titleH=Math.round(W*0.078), footH=Math.round(W*0.058);
     var out=document.createElement('canvas'); out.width=W+m*2; out.height=titleH+H+footH;
     var x=out.getContext('2d');
     x.fillStyle='#ffffff'; x.fillRect(0,0,out.width,out.height);
-    x.textBaseline='middle'; x.textAlign='left'; x.fillStyle='#161E59';
-    x.font='700 '+Math.round(W*0.027)+"px 'PT Sans',sans-serif";
-    x.fillText(title, m, Math.round(titleH*0.55));
+    x.textBaseline='middle'; x.textAlign='left';
+    x.fillStyle='#161E59'; x.font='700 '+Math.round(W*0.027)+"px 'PT Sans',sans-serif";
+    x.fillText(title, m, Math.round(titleH*0.40));
+    if(date){ x.fillStyle='#6b7280'; x.font='400 '+Math.round(W*0.0175)+"px 'PT Sans',sans-serif"; x.fillText(date, m, Math.round(titleH*0.74)); }
     x.drawImage(c, m, titleH);
     var lineY=titleH+H+Math.round(footH*0.24);
     x.strokeStyle='#e3e6ee'; x.lineWidth=Math.max(1,Math.round(W*0.0012));
@@ -75,8 +77,8 @@
     var a=document.createElement('a'); a.href=out.toDataURL('image/png'); a.download='stateofai-compute-'+slug+'.png';
     document.body.appendChild(a); a.click(); a.remove();
   }
-  function downloadPng(slug,title){ title=title||'State of AI Report Compute Index';
-    function go(){requestAnimationFrame(function(){requestAnimationFrame(function(){drawExport(slug,title);});});}
+  function downloadPng(slug,title,date){ title=title||'State of AI Report Compute Index';
+    function go(){requestAnimationFrame(function(){requestAnimationFrame(function(){drawExport(slug,title,date);});});}
     if(document.fonts&&document.fonts.ready){try{document.fonts.load("700 20px 'PT Sans'");document.fonts.load("400 20px 'Francois One'");}catch(e){} document.fonts.ready.then(go);}
     else{go();}
   }
@@ -109,7 +111,7 @@
     if(cp){ if(navigator.clipboard)navigator.clipboard.writeText(cp.getAttribute('data-copy')); cp.textContent='Copied!'; e.preventDefault(); e.stopPropagation(); return; }
     var b=t.closest&&t.closest('.chart-btn');
     if(b){ var tools=b.closest('.chart-tools'); var slug=tools.getAttribute('data-slug'); var h=parseInt(tools.getAttribute('data-h'),10)||420; var act=b.getAttribute('data-act');
-      if(act==='download')downloadPng(slug, chartTitle(tools)); else if(act==='share')share(slug,b); else if(act==='embed')embed(slug,h,b);
+      if(act==='download')downloadPng(slug, chartTitle(tools), chartDate(tools)); else if(act==='share')share(slug,b); else if(act==='embed')embed(slug,h,b);
       e.preventDefault(); e.stopPropagation(); return; }
   });
 })();
