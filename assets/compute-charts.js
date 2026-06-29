@@ -7,11 +7,12 @@
 
  function fmtFull(v){return v==null?'':Number(v).toLocaleString('en-US');}
  function fmtK(v){v=Number(v);var a=Math.abs(v);return a>=1000?(v/1000)+'k':''+v;}
+ function logTick(v){if(v<=0)return '';var p=Math.pow(10,Math.floor(Math.log10(v)+1e-9));var m=v/p;var r=Math.round(m);if((r===1||r===2||r===5)&&Math.abs(m-r)<0.02)return fmtK(v);return '';}
  function el(id){return document.getElementById(id);}
  function makeLine(id,d){var c=el(id);if(!c)return;new Chart(c,{type:'line',
    data:{labels:d.labels,datasets:d.series.map(function(s,i){return{label:s.name,data:s.data,borderColor:PAL[i%PAL.length],backgroundColor:PAL[i%PAL.length],borderWidth:2,pointRadius:2,pointHoverRadius:4,tension:0.25,spanGaps:false};})},
    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
-     scales:{x:{grid:{display:false}},y:{type:d.log?'logarithmic':'linear',title:{display:true,text:d.ytitle},ticks:{callback:function(v){return fmtK(v);}}}},
+     scales:{x:{grid:{display:false}},y:{type:d.log?'logarithmic':'linear',title:{display:true,text:d.ytitle},ticks:{maxTicksLimit:14,autoSkip:true,callback:function(v){return d.log?logTick(v):fmtK(v);}}}},
      plugins:{legend:{position:'right',labels:{boxWidth:12,boxHeight:12,font:{size:11}}},
        tooltip:{callbacks:{label:function(ctx){return ctx.dataset.label+': '+fmtFull(ctx.parsed.y);}}}}}});}
  function makeStacked(id,d){var c=el(id);if(!c)return;new Chart(c,{type:'bar',
@@ -44,12 +45,33 @@
   var SITE='https://www.stateof.ai';
   function cv(slug){return document.getElementById('chart-'+slug);}
   function closeMenus(){var m=document.querySelectorAll('.chart-menu');for(var i=0;i<m.length;i++)m[i].remove();}
-  function downloadPng(slug){
+  function chartTitle(tools){var g=tools&&tools.closest('.graph');var t=g&&g.querySelector('.graph-title');return t?t.textContent.trim():'State of AI Report Compute Index';}
+  function drawExport(slug,title){
     var c=cv(slug); if(!c)return;
-    var out=document.createElement('canvas'); out.width=c.width; out.height=c.height;
-    var x=out.getContext('2d'); x.fillStyle='#ffffff'; x.fillRect(0,0,out.width,out.height); x.drawImage(c,0,0);
+    var W=c.width, H=c.height, m=Math.round(W*0.022), titleH=Math.round(W*0.06), footH=Math.round(W*0.058);
+    var out=document.createElement('canvas'); out.width=W+m*2; out.height=titleH+H+footH;
+    var x=out.getContext('2d');
+    x.fillStyle='#ffffff'; x.fillRect(0,0,out.width,out.height);
+    x.textBaseline='middle'; x.textAlign='left'; x.fillStyle='#161E59';
+    x.font='700 '+Math.round(W*0.027)+"px 'PT Sans',sans-serif";
+    x.fillText(title, m, Math.round(titleH*0.55));
+    x.drawImage(c, m, titleH);
+    var lineY=titleH+H+Math.round(footH*0.24);
+    x.strokeStyle='#e3e6ee'; x.lineWidth=Math.max(1,Math.round(W*0.0012));
+    x.beginPath(); x.moveTo(m,lineY); x.lineTo(out.width-m,lineY); x.stroke();
+    var fy=titleH+H+Math.round(footH*0.62);
+    x.textAlign='left'; x.fillStyle='#161E59'; x.font='700 '+Math.round(W*0.023)+"px 'PT Sans',sans-serif";
+    var wm='State of AI'; x.fillText(wm,m,fy);
+    var w=x.measureText(wm).width; x.fillStyle='#FF8C00'; x.fillText('.',m+w+Math.round(W*0.002),fy);
+    x.textAlign='right'; x.fillStyle='#6b7280'; x.font='400 '+Math.round(W*0.02)+"px 'PT Sans',sans-serif";
+    x.fillText('stateof.ai', out.width-m, fy);
     var a=document.createElement('a'); a.href=out.toDataURL('image/png'); a.download='stateofai-compute-'+slug+'.png';
     document.body.appendChild(a); a.click(); a.remove();
+  }
+  function downloadPng(slug,title){ title=title||'State of AI Report Compute Index';
+    function go(){requestAnimationFrame(function(){requestAnimationFrame(function(){drawExport(slug,title);});});}
+    if(document.fonts&&document.fonts.ready){try{document.fonts.load("700 20px 'PT Sans'");}catch(e){} document.fonts.ready.then(go);}
+    else{go();}
   }
   function openMenu(btn,html){
     closeMenus();
@@ -80,7 +102,7 @@
     if(cp){ if(navigator.clipboard)navigator.clipboard.writeText(cp.getAttribute('data-copy')); cp.textContent='Copied!'; e.preventDefault(); e.stopPropagation(); return; }
     var b=t.closest&&t.closest('.chart-btn');
     if(b){ var tools=b.closest('.chart-tools'); var slug=tools.getAttribute('data-slug'); var h=parseInt(tools.getAttribute('data-h'),10)||420; var act=b.getAttribute('data-act');
-      if(act==='download')downloadPng(slug); else if(act==='share')share(slug,b); else if(act==='embed')embed(slug,h,b);
+      if(act==='download')downloadPng(slug, chartTitle(tools)); else if(act==='share')share(slug,b); else if(act==='embed')embed(slug,h,b);
       e.preventDefault(); e.stopPropagation(); return; }
   });
 })();
