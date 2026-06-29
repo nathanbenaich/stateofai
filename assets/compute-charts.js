@@ -13,6 +13,16 @@
    tip.boxHeight=11;
    tip.boxPadding=4;
  }
+ if(Chart.register){
+   Chart.register({id:'computeTooltipPointer',afterEvent:function(chart,args){
+     var e=args&&args.event;
+     if(e&&typeof e.x==='number'&&typeof e.y==='number'){
+       chart.$computeTooltipPointer={x:e.x,y:e.y};
+       var t=chart.canvas&&chart.canvas.parentNode&&chart.canvas.parentNode.querySelector('.compute-chart-tooltip');
+       if(t&&chart.tooltip&&chart.tooltip.opacity)placeTooltip(t,chart,chart.tooltip);
+     }
+   }});
+ }
  try{if(/\/compute\/(cardgen|embed)\b/.test(location.pathname)){Chart.defaults.animation=false;}}catch(e){}
  var PAL=['#161E59','#154ee3','#FF8C00','#2CA02C','#D62728','#9467BD','#17BECF','#8C564B','#E377C2','#BCBD22','#7F7F7F','#E6A817'];
  var DATA={"cited_chip": {"labels": ["2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"], "log": true, "ytitle": "Citations (log scale)", "series": [{"name": "All NVIDIA", "data": [1859, 4384, 9830, 14663, 20350, 29133, 44389, 40307, 44715]}, {"name": "TPU", "data": [30, 153, 231, 268, 178, 167, 1702, 1249, 1159]}, {"name": "ASICs", "data": [71, 112, 139, 130, 118, 158, 164, 218, 252]}, {"name": "FPGAs", "data": [435, 585, 799, 742, 695, 823, 1070, 1099, 1058]}, {"name": "Huawei Ascend 910", "data": [2, 4, 12, 10, 14, 15, 87, 137, 213]}, {"name": "Big 6 Startups", "data": [38, 75, 151, 135, 140, 248, 586, 587, 472]}, {"name": "Apple", "data": [null, null, null, null, null, 269, 604, 741, 998]}, {"name": "All AMD", "data": [null, null, null, null, null, 76, 264, 251, 472]}]}, "cited_nvidia": {"labels": ["2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"], "log": false, "ytitle": "Citations", "series": [{"name": "2080", "data": [388, 910, 2313, 3051, 3032, 2970, 3261, 1733, 1549]}, {"name": "RTX 3090", "data": [0, 0, 199, 1191, 3439, 6461, 8156, 5842, 4521]}, {"name": "4090", "data": [null, null, null, null, 248, 829, 4400, 6003, 6557]}, {"name": "5060/70/90", "data": [null, null, null, null, null, null, null, 772, 1784]}, {"name": "K80", "data": [464, 542, 669, 535, 343, 203, 137, 75, 65]}, {"name": "P100", "data": [477, 842, 1163, 1102, 1001, 753, 629, 472, 303]}, {"name": "V100", "data": [353, 1626, 4059, 6341, 7388, 7548, 6772, 3615, 2381]}, {"name": "A100", "data": [0, 0, 111, 746, 3083, 8392, 17384, 15266, 15327]}, {"name": "H100/200", "data": [null, null, null, null, 31, 160, 1905, 4653, 9823]}, {"name": "B100/200/300", "data": [null, null, null, null, null, null, null, 202, 902]}, {"name": "Titan", "data": [0, 161, 871, 1108, 1226, 1298, 982, 617, 468]}, {"name": "Jetson", "data": [177, 303, 445, 589, 559, 519, 763, 1057, 1253]}]}, "cited_startup": {"labels": ["2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"], "log": false, "ytitle": "Citations", "series": [{"name": "Habana", "data": [0, 15, 30, 24, 31, 19, 58, 64, 24]}, {"name": "Graphcore", "data": [8, 15, 37, 48, 48, 70, 79, 58, 40]}, {"name": "Cerebras", "data": [2, 11, 25, 18, 14, 98, 290, 224, 242]}, {"name": "Sambanova", "data": [0, 0, 11, 14, 11, 22, 42, 39, 52]}, {"name": "Cambricon", "data": [28, 34, 48, 31, 36, 34, 21, 26, 33]}, {"name": "Groq", "data": [null, null, null, null, null, 5, 96, 177, 264]}]}, "hopper": {"labels": ["xAI Colossus 1", "Tesla Cortex", "Meta GenAI clusters", "CoreWeave (one cluster)", "Voltage Park", "JUPITER Booster (Julich)", "Microsoft Eagle", "Alps (CSCS)", "AIST ABCI 3.0", "Isambard-AI (Bristol)", "NVIDIA Eos", "MareNostrum 5 (BSC)", "KAUST Shaheen III", "Venado (LANL)", "Israel-1 (NVIDIA)", "NSCC ASPIRE 2B (Singapore)", "Jean Zay (IDRIS)", "Leonardo LISA (CINECA)"], "unit": "", "series": [{"name": "Deployed", "color": "#161E59", "data": [200000, 66000, 49152, 42000, 24000, 23536, 14400, 10752, 6128, 5448, 4608, 4480, 2800, 2560, 2048, 1536, 1456, 0]}, {"name": "Installing", "color": "#154ee3", "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1328]}, {"name": "Announced", "color": "#F2A65A", "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}]}, "a100": {"labels": ["Meta Research SuperCluster", "Leonardo Booster (CINECA)", "Perlmutter (NERSC)", "Polaris (Argonne)", "Berzelius (Linkoping)", "Delta (NCSA)", "Jean Zay (IDRIS)", "NSCC ASPIRE 2A (Singapore)", "Gadi (NCI)"], "unit": "", "series": [{"name": "Deployed", "color": "#161E59", "data": [16000, 13824, 7168, 2240, 752, 440, 416, 352, 16]}]}, "blackwell": {"labels": ["IREN", "Deutsche Telekom (Munich)", "SoftBank DGX SuperPOD", "E2E Networks (India)", "SK Telecom Haein"], "unit": "", "series": [{"name": "Deployed", "color": "#161E59", "data": [0, 10000, 4000, 1024, 1000]}, {"name": "Installing", "color": "#154ee3", "data": [0, 0, 0, 0, 0]}, {"name": "Announced", "color": "#F2A65A", "data": [50000, 0, 0, 0, 0]}]}, "grace_blackwell": {"labels": ["HUMAIN (Saudi)", "Stargate Abilene (OpenAI/Oracle/Crusoe)", "South Korea (national)", "Nscale to Microsoft", "xAI Colossus 2", "Argonne Solstice+Equinox (DOE)", "Stargate Norway (Nscale/Aker)", "Together / Hypertec", "ByteDance (Malaysia, offshore)", "Stargate UAE / G42", "xAI Colossus 1", "AWS Project Ceiba", "UK Nebius/Nscale", "Mistral Bruno (France)", "Sines (Microsoft/Nscale, PT)", "Taiwan Foxconn", "IT4LIA (Bologna)", "Microsoft Azure GB300", "Microsoft Azure GB200", "HIVE/BUZZ HPC (Bell/Cohere)", "Indosat (Indonesia)", "SoftBank"], "unit": "", "series": [{"name": "Deployed", "color": "#161E59", "data": [0, 0, 0, 0, 0, 0, 0, 36000, 0, 0, 30000, 0, 0, 0, 0, 0, 0, 4608, 4000, 0, 2304, 1224]}, {"name": "Installing", "color": "#154ee3", "data": [18000, 64000, 0, 0, 110000, 10000, 0, 0, 36000, 35000, 0, 20736, 0, 13800, 12600, 0, 0, 0, 0, 2304, 0, 0]}, {"name": "Announced", "color": "#F2A65A", "data": [582000, 386000, 260000, 200000, 0, 100000, 100000, 0, 0, 0, 0, 0, 14000, 0, 0, 10000, 8000, 0, 0, 0, 0, 0]}]}, "demand": {"labels": ["OpenAI", "Anthropic"], "unit": " GW", "series": [{"name": "NVIDIA", "color": "#76B900", "data": [10, 1]}, {"name": "Non-NVIDIA", "color": "#9aa0b4", "data": [0, 5]}]}, "research_topic": {"labels": ["ASICs \u00d7 LLM", "Jetson \u00d7 LLM", "4090 \u00d7 LLM", "FPGA \u00d7 Diffusion", "FPGA \u00d7 Robotics", "Jetson \u00d7 Robotics", "H100/H200 \u00d7 LLM", "Ascend \u00d7 LLM", "MI250 \u00d7 LLM", "MI300 \u00d7 LLM"], "values": [-9.8, -6.5, -5.7, -5.6, -4.4, 19.6, 27.8, 33.9, 34.2, 42.5], "colors": ["#D62728", "#D62728", "#D62728", "#D62728", "#D62728", "#2CA02C", "#2CA02C", "#2CA02C", "#2CA02C", "#2CA02C"], "xtitle": "Skew vs corpus baseline (percentage points)"}};
@@ -64,10 +74,10 @@
    a.style.border='0';
    a.style.left='auto';a.style.right='auto';a.style.top='auto';a.style.bottom='auto';
    if(y==='center'&&x==='left'){
-     a.style.left='-7px';a.style.top='50%';a.style.transform='translateY(-50%)';
+     a.style.left='-7px';a.style.top=Math.max(8,Math.min(t.offsetHeight-8,tooltip.caretY-tooltip.y))+'px';a.style.transform='translateY(-50%)';
      a.style.borderTop='7px solid transparent';a.style.borderBottom='7px solid transparent';a.style.borderRight='7px solid rgba(0,0,0,0.8)';
    }else if(y==='center'&&x==='right'){
-     a.style.right='-7px';a.style.top='50%';a.style.transform='translateY(-50%)';
+     a.style.right='-7px';a.style.top=Math.max(8,Math.min(t.offsetHeight-8,tooltip.caretY-tooltip.y))+'px';a.style.transform='translateY(-50%)';
      a.style.borderTop='7px solid transparent';a.style.borderBottom='7px solid transparent';a.style.borderLeft='7px solid rgba(0,0,0,0.8)';
    }else if(y==='top'){
      a.style.left=Math.max(8,tooltip.caretX-tooltip.x-7)+'px';a.style.top='-7px';a.style.transform='none';
@@ -76,6 +86,34 @@
      a.style.left=Math.max(8,tooltip.caretX-tooltip.x-7)+'px';a.style.bottom='-7px';a.style.transform='none';
      a.style.borderLeft='7px solid transparent';a.style.borderRight='7px solid transparent';a.style.borderTop='7px solid rgba(0,0,0,0.8)';
    }
+ }
+ function clamp(v,min,max){return Math.max(min,Math.min(max,v));}
+ function tooltipAnchor(chart,tooltip){
+   var ev=chart.$computeTooltipPointer||tooltip._eventPosition, pts=tooltip.dataPoints||tooltip._tooltipItems||[], best=null, bestDist=Infinity;
+   if(ev&&pts.length){
+     pts.forEach(function(p){
+       var dataIndex=p.dataIndex==null?p.index:p.dataIndex;
+       var meta=chart.getDatasetMeta&&chart.getDatasetMeta(p.datasetIndex);
+       var el=p.element||(meta&&meta.data&&meta.data[dataIndex]);if(!el)return;
+       var pos=el.getProps?el.getProps(['x','y'],true):el;
+       if(typeof pos.x!=='number'||typeof pos.y!=='number')return;
+       var dx=pos.x-ev.x, dy=pos.y-ev.y, dist=dx*dx+dy*dy;
+       if(dist<bestDist){bestDist=dist;best={x:pos.x,y:pos.y};}
+     });
+   }
+   return best||{x:tooltip.caretX,y:tooltip.caretY};
+ }
+ function placeTooltip(t,chart,tooltip){
+   var anchor=tooltipAnchor(chart,tooltip), gap=10, w=t.offsetWidth, h=t.offsetHeight;
+   var xAlign=anchor.x+gap+w<=chart.width?'left':'right';
+   var x=xAlign==='left'?anchor.x+gap:anchor.x-gap-w;
+   var y=anchor.y-h/2;
+   x=clamp(x,0,Math.max(0,chart.width-w));
+   y=clamp(y,0,Math.max(0,chart.height-h));
+   var placed={x:x,y:y,xAlign:xAlign,yAlign:'center',caretX:anchor.x,caretY:anchor.y};
+   t.style.left=x+'px';
+   t.style.top=y+'px';
+   setTooltipArrow(t,placed);
  }
  function externalTooltip(ctx){
    var chart=ctx.chart, tooltip=ctx.tooltip, t=tooltipEl(chart);
@@ -114,9 +152,7 @@
      row.appendChild(text);
      c.appendChild(row);
    });
-   setTooltipArrow(t,tooltip);
-   t.style.left=tooltip.x+'px';
-   t.style.top=tooltip.y+'px';
+   placeTooltip(t,chart,tooltip);
    t.style.opacity='1';
  }
  function makeLine(id,d){var c=el(id);if(!c)return;new Chart(c,{type:'line',
