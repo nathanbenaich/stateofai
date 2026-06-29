@@ -162,6 +162,64 @@ iframe {
   border-color: #ffffff;
   font-size: 1em;
 }
+.compute-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 26px;
+}
+.compute-nav .button {
+  height: auto;
+  min-height: 2.35em;
+  margin: 0;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.compute-nav-link {
+  padding: 0.45rem 0.8rem;
+}
+.compute-share-button {
+  width: 2.35em;
+  padding-left: 0;
+  padding-right: 0;
+  justify-content: center;
+  border-color: transparent;
+  color: #ffffff;
+  font-weight: 700;
+}
+.compute-share-button.is-x {
+  background-color: #000000;
+}
+.compute-share-button.is-linkedin-brand {
+  background-color: #0a66c2;
+}
+.compute-share-button:hover,
+.compute-share-button:focus {
+  color: #ffffff;
+  filter: brightness(0.92);
+}
+.compute-share-button .fa-brands {
+  font-size: 1rem;
+  line-height: 1;
+}
+@media (max-width: 520px) {
+  .compute-nav {
+    gap: 4px;
+    margin-bottom: 22px;
+  }
+  .compute-nav .button {
+    min-height: 2.25em;
+    font-size: 0.9rem;
+  }
+  .compute-nav-link {
+    padding: 0.4rem 0.5rem;
+  }
+  .compute-share-button {
+    width: 2.25em;
+  }
+}
 
 /* code below is for revue newsletter signup */
 
