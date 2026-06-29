@@ -51,8 +51,8 @@
   function closeMenus(){var m=document.querySelectorAll('.chart-menu');for(var i=0;i<m.length;i++)m[i].remove();}
   function chartTitle(tools){var g=tools&&tools.closest('.graph');var t=g&&g.querySelector('.graph-title');return t?t.textContent.trim():'State of AI Report Compute Index';}
   function chartDate(tools){var g=tools&&tools.closest('.graph');var d=g&&g.querySelector('.graph-date');return d?d.textContent.trim():'';}
-  function drawExport(slug,title,date){
-    var c=cv(slug); if(!c)return;
+  function composeExport(slug,title,date){
+    var c=cv(slug); if(!c)return null;
     var W=c.width, H=c.height, m=Math.round(W*0.022), titleH=Math.round(W*0.078), footH=Math.round(W*0.058);
     var out=document.createElement('canvas'); out.width=W+m*2; out.height=titleH+H+footH;
     var x=out.getContext('2d');
@@ -75,6 +75,11 @@
     x.fillStyle='#ff9900'; x.fillRect(m+ww+Math.round(fpx*0.14), fy-Math.round(sq*0.35), sq, sq);
     x.textAlign='right'; x.fillStyle='#6b7280'; x.font='400 '+Math.round(W*0.02)+"px 'PT Sans',sans-serif";
     x.fillText('stateof.ai', out.width-m, fy);
+    return out;
+  }
+  function dataURLtoFile(d,name){var a=d.split(','),mime=(a[0].match(/:(.*?);/)||[])[1]||'image/png',bs=atob(a[1]),n=bs.length,u8=new Uint8Array(n);while(n--){u8[n]=bs.charCodeAt(n);}return new File([u8],name,{type:mime});}
+  function drawExport(slug,title,date){
+    var out=composeExport(slug,title,date); if(!out)return;
     var a=document.createElement('a'); a.href=out.toDataURL('image/png'); a.download='stateofai-compute-'+slug+'.png';
     document.body.appendChild(a); a.click(); a.remove();
   }
@@ -92,13 +97,25 @@
       document.addEventListener('click',onDoc);
     },0);
   }
-  function share(slug,btn){
-    var url=SITE+'/compute#chart-'+slug;
-    var t='State of AI Report Compute Index';
+  function shareText(title){return title+'\n\nDiscover more AI compute trends on @stateofaireport’s Compute Index';}
+  function shareFallback(slug,title,btn){
+    var url=SITE+'/compute#chart-'+slug; var txt=shareText(title);
     openMenu(btn,
-      '<a target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?text='+encodeURIComponent(t)+'&url='+encodeURIComponent(url)+'">X / Twitter</a>'+
+      '<a target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?text='+encodeURIComponent(txt)+'&url='+encodeURIComponent(url)+'">X / Twitter</a>'+
       '<a target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(url)+'">LinkedIn</a>'+
-      '<button type="button" class="cm-copy" data-copy="'+url+'">Copy link</button>');
+      '<button type="button" class="cm-copy" data-copy="'+url+'">Copy link</button>'+
+      '<button type="button" class="cm-dl" data-slug="'+slug+'">Download image</button>');
+  }
+  function shareChart(slug,title,date,btn){
+    var url=SITE+'/compute#chart-'+slug;
+    try{
+      var out=composeExport(slug,title,date);
+      if(out && navigator.canShare){
+        var file=dataURLtoFile(out.toDataURL('image/png'),'stateofai-compute-'+slug+'.png');
+        if(navigator.canShare({files:[file]})){ navigator.share({files:[file],text:shareText(title)+'\n'+url,title:title}).catch(function(){}); return; }
+      }
+    }catch(e){}
+    shareFallback(slug,title,btn);
   }
   function embed(slug,h,btn){
     var snip='<iframe src="'+SITE+'/compute/embed/'+slug+'" width="100%" height="'+(h+24)+'" style="border:0" loading="lazy" title="State of AI Compute Index"></iframe>';
@@ -110,9 +127,11 @@
     var t=e.target;
     var cp=t.closest&&t.closest('.cm-copy');
     if(cp){ if(navigator.clipboard)navigator.clipboard.writeText(cp.getAttribute('data-copy')); cp.textContent='Copied!'; e.preventDefault(); e.stopPropagation(); return; }
+    var dl=t.closest&&t.closest('.cm-dl');
+    if(dl){ var s=dl.getAttribute('data-slug'); var tl=document.querySelector('.chart-tools[data-slug="'+s+'"]'); downloadPng(s, chartTitle(tl), chartDate(tl)); closeMenus(); e.preventDefault(); e.stopPropagation(); return; }
     var b=t.closest&&t.closest('.chart-btn');
     if(b){ var tools=b.closest('.chart-tools'); var slug=tools.getAttribute('data-slug'); var h=parseInt(tools.getAttribute('data-h'),10)||420; var act=b.getAttribute('data-act');
-      if(act==='download')downloadPng(slug, chartTitle(tools), chartDate(tools)); else if(act==='share')share(slug,b); else if(act==='embed')embed(slug,h,b);
+      if(act==='download')downloadPng(slug, chartTitle(tools), chartDate(tools)); else if(act==='share')shareChart(slug, chartTitle(tools), chartDate(tools), b); else if(act==='embed')embed(slug,h,b);
       e.preventDefault(); e.stopPropagation(); return; }
   });
 })();
