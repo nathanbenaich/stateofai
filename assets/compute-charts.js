@@ -9,17 +9,20 @@
  function fmtK(v){v=Number(v);var a=Math.abs(v);return a>=1000?(v/1000)+'k':''+v;}
  function logTick(v){if(v<=0)return '';var p=Math.pow(10,Math.floor(Math.log10(v)+1e-9));var m=v/p;var r=Math.round(m);if((r===1||r===2||r===5)&&Math.abs(m-r)<0.02)return fmtK(v);return '';}
  function el(id){return document.getElementById(id);}
+ function fade(c,a){if(typeof c==='string'&&c[0]==='#'&&c.length>=7){var n=parseInt(c.slice(1,7),16);return 'rgba('+((n>>16)&255)+','+((n>>8)&255)+','+(n&255)+','+a+')';}return c;}
+ function lgHover(e,item,legend){var ch=legend.chart;ch.data.datasets.forEach(function(ds,j){var on=j===item.datasetIndex;var c=ds._c||ds.borderColor||ds.backgroundColor;ds.borderColor=on?c:fade(c,0.12);ds.backgroundColor=on?c:fade(c,0.12);});ch.update('none');}
+ function lgLeave(e,item,legend){var ch=legend.chart;ch.data.datasets.forEach(function(ds){var c=ds._c||ds.borderColor||ds.backgroundColor;ds.borderColor=c;ds.backgroundColor=c;});ch.update('none');}
  function makeLine(id,d){var c=el(id);if(!c)return;new Chart(c,{type:'line',
-   data:{labels:d.labels,datasets:d.series.map(function(s,i){return{label:s.name,data:s.data,borderColor:PAL[i%PAL.length],backgroundColor:PAL[i%PAL.length],borderWidth:2,pointRadius:2,pointHoverRadius:4,tension:0.25,spanGaps:false};})},
+   data:{labels:d.labels,datasets:d.series.map(function(s,i){var col=PAL[i%PAL.length];return{label:s.name,data:s.data,_c:col,borderColor:col,backgroundColor:col,borderWidth:2,pointRadius:2,pointHoverRadius:4,tension:0.25,spanGaps:false};})},
    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
      scales:{x:{grid:{display:false}},y:{type:d.log?'logarithmic':'linear',title:{display:true,text:d.ytitle},ticks:{maxTicksLimit:14,autoSkip:true,callback:function(v){return d.log?logTick(v):fmtK(v);}}}},
-     plugins:{legend:{position:'right',labels:{boxWidth:12,boxHeight:12,font:{size:11}}},
+     plugins:{legend:{position:'right',labels:{boxWidth:12,boxHeight:12,font:{size:11}},onHover:lgHover,onLeave:lgLeave},
        tooltip:{callbacks:{label:function(ctx){return ctx.dataset.label+': '+fmtFull(ctx.parsed.y);}}}}}});}
  function makeStacked(id,d){var c=el(id);if(!c)return;new Chart(c,{type:'bar',
-   data:{labels:d.labels,datasets:d.series.map(function(s){return{label:s.name,data:s.data,backgroundColor:s.color,borderWidth:0,borderRadius:2};})},
+   data:{labels:d.labels,datasets:d.series.map(function(s){return{label:s.name,data:s.data,_c:s.color,backgroundColor:s.color,borderWidth:0,borderRadius:2};})},
    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
      scales:{x:{stacked:true,ticks:{callback:function(v){return fmtK(v)+(d.unit||'');}}},y:{stacked:true,ticks:{font:{size:11},autoSkip:false}}},
-     plugins:{legend:{position:'top',labels:{boxWidth:12,boxHeight:12,font:{size:11}}},
+     plugins:{legend:{position:'top',labels:{boxWidth:12,boxHeight:12,font:{size:11}},onHover:lgHover,onLeave:lgLeave},
        tooltip:{callbacks:{label:function(ctx){return ctx.dataset.label+': '+fmtFull(ctx.parsed.x)+(d.unit||'');}}}}}});}
  function makeDiverging(id,d){var c=el(id);if(!c)return;new Chart(c,{type:'bar',
    data:{labels:d.labels,datasets:[{data:d.values,backgroundColor:d.colors,borderWidth:0,borderRadius:2}]},
@@ -59,10 +62,14 @@
     var lineY=titleH+H+Math.round(footH*0.24);
     x.strokeStyle='#e3e6ee'; x.lineWidth=Math.max(1,Math.round(W*0.0012));
     x.beginPath(); x.moveTo(m,lineY); x.lineTo(out.width-m,lineY); x.stroke();
-    var fy=titleH+H+Math.round(footH*0.62);
-    x.textAlign='left'; x.fillStyle='#161E59'; x.font='700 '+Math.round(W*0.023)+"px 'PT Sans',sans-serif";
-    var wm='State of AI'; x.fillText(wm,m,fy);
-    var w=x.measureText(wm).width; x.fillStyle='#FF8C00'; x.fillText('.',m+w+Math.round(W*0.002),fy);
+    var fy=titleH+H+Math.round(footH*0.6);
+    var wm='STATE OF AI REPORT COMPUTE INDEX', maxW=out.width*0.62, fpx=Math.round(W*0.023);
+    x.textAlign='left'; x.textBaseline='middle';
+    x.font='400 '+fpx+"px 'Francois One','PT Sans',sans-serif";
+    while(x.measureText(wm).width>maxW && fpx>8){fpx-=1; x.font='400 '+fpx+"px 'Francois One','PT Sans',sans-serif";}
+    x.fillStyle='#161E59'; x.fillText(wm, m, fy);
+    var ww=x.measureText(wm).width, sq=Math.round(fpx*0.34);
+    x.fillStyle='#ff9900'; x.fillRect(m+ww+Math.round(fpx*0.14), fy-Math.round(sq*0.35), sq, sq);
     x.textAlign='right'; x.fillStyle='#6b7280'; x.font='400 '+Math.round(W*0.02)+"px 'PT Sans',sans-serif";
     x.fillText('stateof.ai', out.width-m, fy);
     var a=document.createElement('a'); a.href=out.toDataURL('image/png'); a.download='stateofai-compute-'+slug+'.png';
@@ -70,7 +77,7 @@
   }
   function downloadPng(slug,title){ title=title||'State of AI Report Compute Index';
     function go(){requestAnimationFrame(function(){requestAnimationFrame(function(){drawExport(slug,title);});});}
-    if(document.fonts&&document.fonts.ready){try{document.fonts.load("700 20px 'PT Sans'");}catch(e){} document.fonts.ready.then(go);}
+    if(document.fonts&&document.fonts.ready){try{document.fonts.load("700 20px 'PT Sans'");document.fonts.load("400 20px 'Francois One'");}catch(e){} document.fonts.ready.then(go);}
     else{go();}
   }
   function openMenu(btn,html){
