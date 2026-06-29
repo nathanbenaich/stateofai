@@ -105,8 +105,7 @@
     openMenu(btn,
       '<a target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?text='+encodeURIComponent(txt)+'&url='+encodeURIComponent(url)+'">X / Twitter</a>'+
       '<a target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(url)+'">LinkedIn</a>'+
-      '<button type="button" class="cm-copy" data-copy="'+url+'">Copy link</button>'+
-      '<button type="button" class="cm-dl" data-slug="'+slug+'">Download image</button>');
+      '<button type="button" class="cm-copy" data-copy="'+url+'">Copy link</button>');
   }
   function shareChart(slug,title,date,btn){ shareFallback(slug,title,btn); }
   function embed(slug,h,btn){
