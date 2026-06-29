@@ -6,7 +6,13 @@
     top: 0px;
     font-size: 24px;
     color: #ffffff !important;
+    box-sizing: border-box;
+    width: 100%;
 
+}
+
+.announcement p {
+  margin: 0;
 }
 
 .announcement a {
@@ -20,10 +26,14 @@ body * {
 
 html {
   background-color: #F8FAF9 !important;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
 }
 body {
   font-family: 'PT Sans', sans-serif;
   font-size: 1.1em;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 ol {
@@ -111,6 +121,15 @@ iframe {
   width: 100%;
   height: 100%;
 }
+
+@media (max-width: 520px) {
+  .announcement {
+    font-size: clamp(16px, 4.6vw, 24px);
+    line-height: 1.25;
+    padding: 9px 8px;
+  }
+}
+
 .as-title {
   font-weight: 800;
   font-size: 3rem;
