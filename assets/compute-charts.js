@@ -38,3 +38,49 @@
  }
  if(document.readyState!=='loading'){init();}else{document.addEventListener('DOMContentLoaded',init);}
 })();
+
+/* ---- chart toolbar UI (share / download / embed) ---- */
+(function(){
+  var SITE='https://www.stateof.ai';
+  function cv(slug){return document.getElementById('chart-'+slug);}
+  function closeMenus(){var m=document.querySelectorAll('.chart-menu');for(var i=0;i<m.length;i++)m[i].remove();}
+  function downloadPng(slug){
+    var c=cv(slug); if(!c)return;
+    var out=document.createElement('canvas'); out.width=c.width; out.height=c.height;
+    var x=out.getContext('2d'); x.fillStyle='#ffffff'; x.fillRect(0,0,out.width,out.height); x.drawImage(c,0,0);
+    var a=document.createElement('a'); a.href=out.toDataURL('image/png'); a.download='stateofai-compute-'+slug+'.png';
+    document.body.appendChild(a); a.click(); a.remove();
+  }
+  function openMenu(btn,html){
+    closeMenus();
+    var m=document.createElement('div'); m.className='chart-menu'; m.innerHTML=html;
+    btn.parentNode.appendChild(m);
+    setTimeout(function(){
+      function onDoc(e){ if(!m.contains(e.target)&&e.target!==btn){ m.remove(); document.removeEventListener('click',onDoc);} }
+      document.addEventListener('click',onDoc);
+    },0);
+  }
+  function share(slug,btn){
+    var url=SITE+'/compute#chart-'+slug;
+    var t='State of AI Report Compute Index';
+    openMenu(btn,
+      '<a target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?text='+encodeURIComponent(t)+'&url='+encodeURIComponent(url)+'">X / Twitter</a>'+
+      '<a target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(url)+'">LinkedIn</a>'+
+      '<button type="button" class="cm-copy" data-copy="'+url+'">Copy link</button>');
+  }
+  function embed(slug,h,btn){
+    var snip='<iframe src="'+SITE+'/compute/embed/'+slug+'" width="100%" height="'+(h+24)+'" style="border:0" loading="lazy" title="State of AI Compute Index"></iframe>';
+    var esc=snip.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    var attr=snip.replace(/&/g,'&amp;').replace(/"/g,'&quot;');
+    openMenu(btn,'<div class="embed-box"><textarea readonly rows="3">'+esc+'</textarea><button type="button" class="cm-copy" data-copy="'+attr+'">Copy embed code</button></div>');
+  }
+  document.addEventListener('click',function(e){
+    var t=e.target;
+    var cp=t.closest&&t.closest('.cm-copy');
+    if(cp){ if(navigator.clipboard)navigator.clipboard.writeText(cp.getAttribute('data-copy')); cp.textContent='Copied!'; e.preventDefault(); e.stopPropagation(); return; }
+    var b=t.closest&&t.closest('.chart-btn');
+    if(b){ var tools=b.closest('.chart-tools'); var slug=tools.getAttribute('data-slug'); var h=parseInt(tools.getAttribute('data-h'),10)||420; var act=b.getAttribute('data-act');
+      if(act==='download')downloadPng(slug); else if(act==='share')share(slug,b); else if(act==='embed')embed(slug,h,b);
+      e.preventDefault(); e.stopPropagation(); return; }
+  });
+})();

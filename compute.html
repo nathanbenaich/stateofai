@@ -110,6 +110,17 @@
 
 
 
+    <style>
+.chart-tools{display:flex;gap:8px;justify-content:flex-end;margin:8px 2px 0;position:relative}
+.chart-btn{font-size:12px;background:#fff;border:1px solid #d7dbe6;color:#161E59;border-radius:6px;padding:4px 10px;cursor:pointer;font-family:'PT Sans',sans-serif;line-height:1.3}
+.chart-btn:hover{background:#eef1f8}
+.chart-menu{position:absolute;top:34px;right:0;background:#fff;border:1px solid #d7dbe6;border-radius:8px;box-shadow:0 6px 20px rgba(22,30,89,.15);z-index:30;display:flex;flex-direction:column;min-width:170px;overflow:hidden}
+.chart-menu a,.chart-menu .cm-copy{padding:9px 13px;text-align:left;background:none;border:none;font-size:13px;color:#161E59;cursor:pointer;text-decoration:none;font-family:'PT Sans',sans-serif}
+.chart-menu a:hover,.chart-menu .cm-copy:hover{background:#eef1f8}
+.embed-box{padding:9px;display:flex;flex-direction:column;gap:7px;min-width:290px}
+.embed-box textarea{width:100%;font-size:11px;font-family:ui-monospace,Menlo,monospace;border:1px solid #d7dbe6;border-radius:5px;padding:6px;resize:none;color:#161E59}
+.embed-box .cm-copy{border:1px solid #d7dbe6;border-radius:6px}
+</style>
     </head>
     <body>
     <!-- Google Tag Manager (noscript) -->
@@ -165,6 +176,7 @@
                   <span class="graph-date"> Last update: June 2026</span>                  
                 </h2>
                 <div class="chart-box" style="position:relative;height:430px;margin-top:12px"><canvas id="chart-cited-chip"></canvas></div>
+                <div class="chart-tools" data-slug="cited-chip" data-h="430"><button class="chart-btn" data-act="download" title="Download PNG">⬇ Download</button><button class="chart-btn" data-act="share" title="Share">↗ Share</button><button class="chart-btn" data-act="embed" title="Embed">&lt;/&gt; Embed</button></div>
                 <p class="graph-notes">
                   Notes: This figure presents the number of open source AI papers that cite the use of specific AI chips according to analysis by <a href="https://www.zeta-alpha.com/" target="_blank" rel="noopener noreferrer">Zeta Alpha</a>. The "Big 6 Startups" category includes Habana, Graphcore, Cerebras, SambaNova Systemes, Cambricon and Groq. Figures for 2026 include counts as of 1 June 2026 and H2 predictions adjusted for volume.
                 </p>
@@ -176,6 +188,7 @@
                   <span class="graph-date"> Last update: June 2026</span>                  
                 </h2>
                 <div class="chart-box" style="position:relative;height:450px;margin-top:12px"><canvas id="chart-cited-nvidia"></canvas></div>
+                <div class="chart-tools" data-slug="cited-nvidia" data-h="450"><button class="chart-btn" data-act="download" title="Download PNG">⬇ Download</button><button class="chart-btn" data-act="share" title="Share">↗ Share</button><button class="chart-btn" data-act="embed" title="Embed">&lt;/&gt; Embed</button></div>
                 <p class="graph-notes">
                   Notes: This figure presents the number of open source AI papers that cite the use of specific NVIDIA chips according to analysis by <a href="https://www.zeta-alpha.com/" target="_blank" rel="noopener noreferrer">Zeta Alpha</a>. Figures for 2026 include counts as of 1 June 2026 and H2 predictions adjusted for volume.
                 </p>
@@ -187,6 +200,7 @@
                   <span class="graph-date"> Last update: June 2026</span>                  
                 </h2>
                 <div class="chart-box" style="position:relative;height:380px;margin-top:12px"><canvas id="chart-cited-startup"></canvas></div>
+                <div class="chart-tools" data-slug="cited-startup" data-h="380"><button class="chart-btn" data-act="download" title="Download PNG">⬇ Download</button><button class="chart-btn" data-act="share" title="Share">↗ Share</button><button class="chart-btn" data-act="embed" title="Embed">&lt;/&gt; Embed</button></div>
                 <p class="graph-notes">
                   Notes: This figure presents the number of open source AI papers that cite the use of specific AI chip startups according to analysis by <a href="https://www.zeta-alpha.com/" target="_blank" rel="noopener noreferrer">Zeta Alpha</a>. Figures for 2026 include counts as of 1 June 2026 and H2 predictions adjusted for volume.
                 </p>
@@ -198,6 +212,7 @@
                   <span class="graph-date"> Data cutoff: 1 June 2026</span>
                 </h2>
                 <div class="chart-box" style="position:relative;height:470px;margin-top:12px"><canvas id="chart-hopper"></canvas></div>
+                <div class="chart-tools" data-slug="hopper" data-h="470"><button class="chart-btn" data-act="download" title="Download PNG">⬇ Download</button><button class="chart-btn" data-act="share" title="Share">↗ Share</button><button class="chart-btn" data-act="embed" title="Embed">&lt;/&gt; Embed</button></div>
                 <p class="graph-notes">
                   Notes: Deployed NVIDIA Hopper GPUs (H100, H200, and GH200 Grace-Hopper superchips, counted as one Hopper GPU each) by operator, as of 1 June 2026. Public-cloud, private and national-HPC fleets combined. xAI Colossus 1 is owned by xAI/SpaceX and leased to Anthropic from May 2026; the Tesla and Meta figures include H100-equivalent and aggregate clusters. National-HPC counts are exact; large company figures are best available estimates. Sources: operator disclosures, EuroHPC, Top500 (June 2026), SemiAnalysis, Data Center Dynamics.
                 </p>
@@ -209,6 +224,7 @@
                   <span class="graph-date"> Data cutoff: 1 June 2026</span>
                 </h2>
                 <div class="chart-box" style="position:relative;height:300px;margin-top:12px"><canvas id="chart-a100"></canvas></div>
+                <div class="chart-tools" data-slug="a100" data-h="300"><button class="chart-btn" data-act="download" title="Download PNG">⬇ Download</button><button class="chart-btn" data-act="share" title="Share">↗ Share</button><button class="chart-btn" data-act="embed" title="Embed">&lt;/&gt; Embed</button></div>
                 <p class="graph-notes">
                   Notes: Deployed NVIDIA A100 (Ampere) GPUs by operator, as of 1 June 2026. Ampere is a legacy generation with no new builds; several fleets are being retired. Sources: operator and national-HPC disclosures, Top500.
                 </p>
@@ -220,6 +236,7 @@
                   <span class="graph-date"> Data cutoff: 1 June 2026</span>
                 </h2>
                 <div class="chart-box" style="position:relative;height:230px;margin-top:12px"><canvas id="chart-blackwell"></canvas></div>
+                <div class="chart-tools" data-slug="blackwell" data-h="230"><button class="chart-btn" data-act="download" title="Download PNG">⬇ Download</button><button class="chart-btn" data-act="share" title="Share">↗ Share</button><button class="chart-btn" data-act="embed" title="Embed">&lt;/&gt; Embed</button></div>
                 <p class="graph-notes">
                   Notes: NVIDIA Blackwell standalone GPUs (B200 and B300 "Blackwell Ultra"), split by Deployed / Installing / Announced, as of 1 June 2026. B100 did not ship at scale; most Blackwell volume ships as GB200/GB300 NVL72 (next chart). Public-cloud GA instance counts (Google, AWS, Azure, Lambda, others) are not disclosed. Sources: operator disclosures, NVIDIA, Data Center Dynamics.
                 </p>
@@ -231,6 +248,7 @@
                   <span class="graph-date"> Data cutoff: 1 June 2026</span>
                 </h2>
                 <div class="chart-box" style="position:relative;height:540px;margin-top:12px"><canvas id="chart-grace-blackwell"></canvas></div>
+                <div class="chart-tools" data-slug="grace-blackwell" data-h="540"><button class="chart-btn" data-act="download" title="Download PNG">⬇ Download</button><button class="chart-btn" data-act="share" title="Share">↗ Share</button><button class="chart-btn" data-act="embed" title="Embed">&lt;/&gt; Embed</button></div>
                 <p class="graph-notes">
                   Notes: NVIDIA Grace-Blackwell superchips (GB200 and GB300; one NVL72 rack = 72 GPUs), split by Deployed / Installing / Announced, as of 1 June 2026. The Announced segment is committed pipeline, not installed capacity. Counted by owner/operator; tenants (e.g. OpenAI on Oracle/Crusoe) are not added separately. China-bound and export-restricted parts are excluded. Sources: NVIDIA, operator disclosures, SemiAnalysis, Data Center Dynamics, EuroHPC.
                 </p>
@@ -242,6 +260,7 @@
                   <span class="graph-date"> Data cutoff: 1 June 2026</span>
                 </h2>
                 <div class="chart-box" style="position:relative;height:200px;margin-top:12px"><canvas id="chart-demand"></canvas></div>
+                <div class="chart-tools" data-slug="demand" data-h="200"><button class="chart-btn" data-act="download" title="Download PNG">⬇ Download</button><button class="chart-btn" data-act="share" title="Share">↗ Share</button><button class="chart-btn" data-act="embed" title="Embed">&lt;/&gt; Embed</button></div>
                 <p class="graph-notes">
                   Notes: Frontier-lab contracted compute by silicon vendor, in gigawatts, for GW-disclosed deals only, as of 1 June 2026. OpenAI&#39;s AMD ($90B) and Broadcom custom-chip ($350B) deals and Anthropic&#39;s AWS Trainium commitment are not GW-disclosed, so the non-NVIDIA share is understated. Sources: company announcements, NVIDIA, Google, CNBC.
                 </p>
@@ -253,6 +272,7 @@
                   <span class="graph-date"> Last update: June 2025</span>                  
                 </h2>
                 <div class="chart-box" style="position:relative;height:380px;margin-top:12px"><canvas id="chart-research-topic"></canvas></div>
+                <div class="chart-tools" data-slug="research-topic" data-h="380"><button class="chart-btn" data-act="download" title="Download PNG">⬇ Download</button><button class="chart-btn" data-act="share" title="Share">↗ Share</button><button class="chart-btn" data-act="embed" title="Embed">&lt;/&gt; Embed</button></div>
                 <p class="graph-notes">
                   Notes: The dataset covers 6,356 papers published between January 1 and June 1, 2025 and analysed using <a href="https://www.zeta-alpha.com/" target="_blank" rel="noopener noreferrer">Zeta Alpha</a>. Topic labels were assigned using GPT-4o-mini, and we filtered the results to include only chip-topic pairs with at least three papers. To focus the analysis on meaningful differentiation, we excluded topics whose percentage difference fell between -1 and +1 compared to the corpus-wide baseline. The results reveal clear skews between specific chips and research areas.
                 </p>
