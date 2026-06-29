@@ -108,18 +108,7 @@
       '<button type="button" class="cm-copy" data-copy="'+url+'">Copy link</button>'+
       '<button type="button" class="cm-dl" data-slug="'+slug+'">Download image</button>');
   }
-  function isTouch(){try{return (navigator.maxTouchPoints||0)>0 && window.matchMedia && window.matchMedia('(pointer:coarse)').matches;}catch(e){return false;}}
-  function shareChart(slug,title,date,btn){
-    var url=SITE+'/compute#chart-'+slug;
-    try{
-      var out=composeExport(slug,title,date);
-      if(isTouch() && out && navigator.canShare){
-        var file=dataURLtoFile(out.toDataURL('image/png'),'stateofai-compute-'+slug+'.png');
-        if(navigator.canShare({files:[file]})){ navigator.share({files:[file],text:shareText(title)+'\n'+url,title:title}).catch(function(){}); return; }
-      }
-    }catch(e){}
-    shareFallback(slug,title,btn);
-  }
+  function shareChart(slug,title,date,btn){ shareFallback(slug,title,btn); }
   function embed(slug,h,btn){
     var snip='<iframe src="'+SITE+'/compute/embed/'+slug+'" width="100%" height="'+(h+24)+'" style="border:0" loading="lazy" title="State of AI Compute Index"></iframe>';
     var esc=snip.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
