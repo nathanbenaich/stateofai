@@ -192,6 +192,16 @@ iframe {
   color: #ffffff;
   border-color: #ffffff;
   font-size: 1em;
+  text-decoration: none;
+}
+.button:hover,
+.button:focus,
+.button:active,
+.button-email,
+.button-email:hover,
+.button-email:focus,
+.button-email:active {
+  text-decoration: none;
 }
 .hero-actions {
   display: flex;
@@ -208,6 +218,30 @@ iframe {
   min-height: 2.35em;
   margin: 0;
   white-space: nowrap;
+}
+.social-share-button {
+  width: 2.35em;
+  padding-left: 0;
+  padding-right: 0;
+  justify-content: center;
+  border-color: transparent;
+  color: #ffffff;
+  font-weight: 700;
+}
+.social-share-button.is-x-brand {
+  background-color: #000000;
+}
+.social-share-button.is-linkedin-brand {
+  background-color: #0a66c2;
+}
+.social-share-button:hover,
+.social-share-button:focus {
+  color: #ffffff;
+  filter: brightness(0.92);
+}
+.social-share-button .fa-brands {
+  font-size: 1rem;
+  line-height: 1;
 }
 .compute-nav {
   display: flex;
@@ -275,6 +309,9 @@ iframe {
     font-size: 0.9rem;
     padding-left: 0.55rem;
     padding-right: 0.55rem;
+  }
+  .social-share-button {
+    width: 2.25em;
   }
 }
 
