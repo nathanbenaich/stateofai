@@ -1,0 +1,380 @@
+{
+ "cited_chip": {
+  "type": "line",
+  "combo": "grouped-bars",
+  "columns": [
+   "Year",
+   "All NVIDIA",
+   "TPU",
+   "ASICs",
+   "FPGAs",
+   "Huawei Ascend 910",
+   "Big 6 Startups",
+   "Apple",
+   "All AMD"
+  ],
+  "rows": [
+   {
+    "Year": "2018",
+    "All NVIDIA": "1,859",
+    "TPU": "30",
+    "ASICs": "71",
+    "FPGAs": "435",
+    "Huawei Ascend 910": "2",
+    "Big 6 Startups": "38",
+    "Apple": null,
+    "All AMD": null
+   },
+   {
+    "Year": "2019",
+    "All NVIDIA": "4,384",
+    "TPU": "153",
+    "ASICs": "112",
+    "FPGAs": "585",
+    "Huawei Ascend 910": "4",
+    "Big 6 Startups": "75",
+    "Apple": null,
+    "All AMD": null
+   },
+   {
+    "Year": "2020",
+    "All NVIDIA": "9,830",
+    "TPU": "231",
+    "ASICs": "139",
+    "FPGAs": "799",
+    "Huawei Ascend 910": "12",
+    "Big 6 Startups": "151",
+    "Apple": null,
+    "All AMD": null
+   },
+   {
+    "Year": "2021",
+    "All NVIDIA": "14,663",
+    "TPU": "268",
+    "ASICs": "130",
+    "FPGAs": "742",
+    "Huawei Ascend 910": "10",
+    "Big 6 Startups": "135",
+    "Apple": null,
+    "All AMD": null
+   },
+   {
+    "Year": "2022",
+    "All NVIDIA": "20350",
+    "TPU": "178",
+    "ASICs": "118",
+    "FPGAs": "695",
+    "Huawei Ascend 910": "14",
+    "Big 6 Startups": "140",
+    "Apple": null,
+    "All AMD": null
+   },
+   {
+    "Year": "2023",
+    "All NVIDIA": "29133",
+    "TPU": "167",
+    "ASICs": "158",
+    "FPGAs": "823",
+    "Huawei Ascend 910": "15",
+    "Big 6 Startups": "248",
+    "Apple": "269",
+    "All AMD": "76"
+   },
+   {
+    "Year": "2024",
+    "All NVIDIA": "44389",
+    "TPU": "1702",
+    "ASICs": "164",
+    "FPGAs": "1070",
+    "Huawei Ascend 910": "87",
+    "Big 6 Startups": "586",
+    "Apple": "604",
+    "All AMD": "264"
+   },
+   {
+    "Year": "2025",
+    "All NVIDIA": "40307",
+    "TPU": "1249",
+    "ASICs": "218",
+    "FPGAs": "1099",
+    "Huawei Ascend 910": "137",
+    "Big 6 Startups": "587",
+    "Apple": "741",
+    "All AMD": "251"
+   },
+   {
+    "Year": "2026",
+    "All NVIDIA": "44715",
+    "TPU": "1159",
+    "ASICs": "252",
+    "FPGAs": "1058",
+    "Huawei Ascend 910": "213",
+    "Big 6 Startups": "472",
+    "Apple": "998",
+    "All AMD": "472"
+   }
+  ]
+ },
+ "cited_nvidia": {
+  "type": "line",
+  "combo": "grouped-bars",
+  "columns": [
+   "Year",
+   "2080",
+   "RTX 3090",
+   "4090",
+   "5060/70/90",
+   "K80",
+   "P100",
+   "V100",
+   "A100",
+   "H100/200",
+   "B100/200/300",
+   "Titan",
+   "Jetson"
+  ],
+  "rows": [
+   {
+    "Year": "2018",
+    "2080": "388",
+    "RTX 3090": "0",
+    "4090": null,
+    "5060/70/90": null,
+    "K80": "464",
+    "P100": "477",
+    "V100": "353",
+    "A100": "0",
+    "H100/200": null,
+    "B100/200/300": null,
+    "Titan": "0",
+    "Jetson": "177"
+   },
+   {
+    "Year": "2019",
+    "2080": "910",
+    "RTX 3090": "0",
+    "4090": null,
+    "5060/70/90": null,
+    "K80": "542",
+    "P100": "842",
+    "V100": "1626",
+    "A100": "0",
+    "H100/200": null,
+    "B100/200/300": null,
+    "Titan": "161",
+    "Jetson": "303"
+   },
+   {
+    "Year": "2020",
+    "2080": "2313",
+    "RTX 3090": "199",
+    "4090": null,
+    "5060/70/90": null,
+    "K80": "669",
+    "P100": "1163",
+    "V100": "4059",
+    "A100": "111",
+    "H100/200": null,
+    "B100/200/300": null,
+    "Titan": "871",
+    "Jetson": "445"
+   },
+   {
+    "Year": "2021",
+    "2080": "3051",
+    "RTX 3090": "1191",
+    "4090": null,
+    "5060/70/90": null,
+    "K80": "535",
+    "P100": "1102",
+    "V100": "6341",
+    "A100": "746",
+    "H100/200": null,
+    "B100/200/300": null,
+    "Titan": "1108",
+    "Jetson": "589"
+   },
+   {
+    "Year": "2022",
+    "2080": "3032",
+    "RTX 3090": "3439",
+    "4090": "248",
+    "5060/70/90": null,
+    "K80": "343",
+    "P100": "1001",
+    "V100": "7388",
+    "A100": "3083",
+    "H100/200": "31",
+    "B100/200/300": null,
+    "Titan": "1226",
+    "Jetson": "559"
+   },
+   {
+    "Year": "2023",
+    "2080": "2970",
+    "RTX 3090": "6461",
+    "4090": "829",
+    "5060/70/90": null,
+    "K80": "203",
+    "P100": "753",
+    "V100": "7548",
+    "A100": "8392",
+    "H100/200": "160",
+    "B100/200/300": null,
+    "Titan": "1298",
+    "Jetson": "519"
+   },
+   {
+    "Year": "2024",
+    "2080": "3261",
+    "RTX 3090": "8156",
+    "4090": "4400",
+    "5060/70/90": null,
+    "K80": "137",
+    "P100": "629",
+    "V100": "6772",
+    "A100": "17384",
+    "H100/200": "1905",
+    "B100/200/300": null,
+    "Titan": "982",
+    "Jetson": "763"
+   },
+   {
+    "Year": "2025",
+    "2080": "1733",
+    "RTX 3090": "5842",
+    "4090": "6003",
+    "5060/70/90": "772",
+    "K80": "75",
+    "P100": "472",
+    "V100": "3615",
+    "A100": "15266",
+    "H100/200": "4653",
+    "B100/200/300": "202",
+    "Titan": "617",
+    "Jetson": "1057"
+   },
+   {
+    "Year": "2026",
+    "2080": "1549",
+    "RTX 3090": "4521",
+    "4090": "6557",
+    "5060/70/90": "1784",
+    "K80": "65",
+    "P100": "303",
+    "V100": "2381",
+    "A100": "15327",
+    "H100/200": "9823",
+    "B100/200/300": "902",
+    "Titan": "468",
+    "Jetson": "1253"
+   }
+  ]
+ },
+ "cited_startup": {
+  "type": "line",
+  "combo": "grouped-bars",
+  "columns": [
+   "Year",
+   "Habana",
+   "Graphcore",
+   "Cerebras",
+   "Sambanova",
+   "Cambricon",
+   "Groq",
+   "WUxFnD6mdZcqYiSOtgLhU"
+  ],
+  "rows": [
+   {
+    "Year": "2018",
+    "Habana": "0",
+    "Graphcore": "8",
+    "Cerebras": "2",
+    "Sambanova": "0",
+    "Cambricon": "28",
+    "Groq": "",
+    "WUxFnD6mdZcqYiSOtgLhU": null
+   },
+   {
+    "Year": "2019",
+    "Habana": "15",
+    "Graphcore": "15",
+    "Cerebras": "11",
+    "Sambanova": "0",
+    "Cambricon": "34",
+    "Groq": "",
+    "WUxFnD6mdZcqYiSOtgLhU": null
+   },
+   {
+    "Year": "2020",
+    "Habana": "30",
+    "Graphcore": "37",
+    "Cerebras": "25",
+    "Sambanova": "11",
+    "Cambricon": "48",
+    "Groq": "",
+    "WUxFnD6mdZcqYiSOtgLhU": null
+   },
+   {
+    "Year": "2021",
+    "Habana": "24",
+    "Graphcore": "48",
+    "Cerebras": "18",
+    "Sambanova": "14",
+    "Cambricon": "31",
+    "Groq": "",
+    "WUxFnD6mdZcqYiSOtgLhU": null
+   },
+   {
+    "Year": "2022",
+    "Habana": "31",
+    "Graphcore": "48",
+    "Cerebras": "14",
+    "Sambanova": "11",
+    "Cambricon": "36",
+    "Groq": "",
+    "WUxFnD6mdZcqYiSOtgLhU": null
+   },
+   {
+    "Year": "2023",
+    "Habana": "19",
+    "Graphcore": "70",
+    "Cerebras": "98",
+    "Sambanova": "22",
+    "Cambricon": "34",
+    "Groq": "5",
+    "WUxFnD6mdZcqYiSOtgLhU": null
+   },
+   {
+    "Year": "2024",
+    "Habana": "58",
+    "Graphcore": "79",
+    "Cerebras": "290",
+    "Sambanova": "42",
+    "Cambricon": "21",
+    "Groq": "96",
+    "WUxFnD6mdZcqYiSOtgLhU": null
+   },
+   {
+    "Year": "2025",
+    "Habana": "64",
+    "Graphcore": "58",
+    "Cerebras": "224",
+    "Sambanova": "39",
+    "Cambricon": "26",
+    "Groq": "177",
+    "WUxFnD6mdZcqYiSOtgLhU": null
+   },
+   {
+    "Year": "2026",
+    "Habana": "24",
+    "Graphcore": "40",
+    "Cerebras": "242",
+    "Sambanova": "52",
+    "Cambricon": "33",
+    "Groq": "264",
+    "WUxFnD6mdZcqYiSOtgLhU": null
+   }
+  ]
+ }
+}

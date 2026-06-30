@@ -1,0 +1,61 @@
+{
+ "type": "barStacked",
+ "combo": "grouped-bars",
+ "columns": [
+  "Chip\u2013topic pair",
+  "Positively skewed vs baseline (pp)",
+  "Negatively skewed vs baseline (pp)"
+ ],
+ "rows": [
+  {
+   "Chip\u2013topic pair": "ASICs \u00d7 LLM",
+   "Positively skewed vs baseline (pp)": null,
+   "Negatively skewed vs baseline (pp)": "-9.8"
+  },
+  {
+   "Chip\u2013topic pair": "Jetson \u00d7 LLM",
+   "Positively skewed vs baseline (pp)": null,
+   "Negatively skewed vs baseline (pp)": "-6.5"
+  },
+  {
+   "Chip\u2013topic pair": "4090 \u00d7 LLM",
+   "Positively skewed vs baseline (pp)": null,
+   "Negatively skewed vs baseline (pp)": "-5.7"
+  },
+  {
+   "Chip\u2013topic pair": "FPGA \u00d7 Diffusion",
+   "Positively skewed vs baseline (pp)": null,
+   "Negatively skewed vs baseline (pp)": "-5.6"
+  },
+  {
+   "Chip\u2013topic pair": "FPGA \u00d7 Robotics",
+   "Positively skewed vs baseline (pp)": null,
+   "Negatively skewed vs baseline (pp)": "-4.4"
+  },
+  {
+   "Chip\u2013topic pair": "Jetson \u00d7 Robotics",
+   "Positively skewed vs baseline (pp)": "19.6",
+   "Negatively skewed vs baseline (pp)": null
+  },
+  {
+   "Chip\u2013topic pair": "H100/H200 \u00d7 LLM",
+   "Positively skewed vs baseline (pp)": "27.8",
+   "Negatively skewed vs baseline (pp)": null
+  },
+  {
+   "Chip\u2013topic pair": "Ascend \u00d7 LLM",
+   "Positively skewed vs baseline (pp)": "33.9",
+   "Negatively skewed vs baseline (pp)": null
+  },
+  {
+   "Chip\u2013topic pair": "MI250 \u00d7 LLM",
+   "Positively skewed vs baseline (pp)": "34.2",
+   "Negatively skewed vs baseline (pp)": null
+  },
+  {
+   "Chip\u2013topic pair": "MI300 \u00d7 LLM",
+   "Positively skewed vs baseline (pp)": "42.5",
+   "Negatively skewed vs baseline (pp)": null
+  }
+ ]
+}
