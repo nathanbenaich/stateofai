@@ -33,6 +33,7 @@ title (`.graph-title`) + date (`.graph-date`) + `<canvas id="chart-<slug>">` + a
 - `og/<slug>.png` — pre-rendered 1200×630 (@2×) card images that X/LinkedIn unfurl.
 - `netlify.toml` — security headers; `/compute/embed/*` is allowed to be framed cross-origin (`frame-ancestors *`).
 - `compute/scripts/` — generators + reference data + this runbook.
+- `compute/data-history/` — version-controlled snapshots of the chart data (`<YYYY-MM>.json`) + `CHANGELOG.md`, so we keep a history of how each graph changed over time.
 
 ## 3. Data model (`DATA` in `assets/compute-charts.js`)
 
@@ -54,14 +55,14 @@ Colors: Deployed `#161E59`, Installing `#154ee3`, Announced `#F2A65A`; line pale
 ## 5. Monthly update procedure
 
 1. **Pick the new cutoff date** (e.g. `1 Jul 2026`).
-2. **Citation charts (Zeta Alpha):** get the refreshed per-year citation counts (chip family, NVIDIA chip, AI-chip startup, research-topic skew). Update `DATA.cited_chip` / `cited_nvidia` / `cited_startup` / `research_topic` in `assets/compute-charts.js`.
-   - If the data still lives in a Graphy chart, it's embedded in that view's page: `curl` the `visualize.graphy.app/view/<id>` URL and parse the `<script id="__NEXT_DATA__">` JSON (`props.pageProps.visualisationEdge.node.dataset`). See `citation-data.json` / `research-topic-data.json` here for the June 2026 extract and shape.
+2. **Citation charts (Zeta Alpha):** these refresh **annually with the State of AI Report**, not monthly — there is no live feed. Zeta Alpha supplies the per-year counts (chip family, NVIDIA chip, AI-chip startup, research-topic skew) as a dataset; paste them into `DATA.cited_chip` / `cited_nvidia` / `cited_startup` / `research_topic` in `assets/compute-charts.js`. `citation-data.json` / `research-topic-data.json` here are the shape reference (values as last refreshed for the Oct 2025 report). **We no longer use Graphy** — the old `visualize.graphy.app` embeds were retired when the charts moved to self-hosted Chart.js; don't fetch them. On a normal monthly run these four charts are unchanged, so leave their "Last update" labels as-is rather than bumping them.
 3. **GPU fleet charts:** refresh `DATA.hopper` / `a100` / `blackwell` / `grace_blackwell` / `demand` by re-running the research sweep (§7). Move operators between Deployed/Installing/Announced as builds progress; re-sort each bar descending by total.
 4. **Update dates:** the `.graph-date` spans in `compute.html` ("Last update: …" / "Data cutoff: …") and the cutoff line in `compute/sources.html`.
 5. **Update sources:** edit the source map in `compute/scripts/build_sources.py` and run it (`cd` repo root → `python3 compute/scripts/build_sources.py`) to regenerate `compute/sources.html`. (Or hand-edit the page.)
-6. **Regenerate the social card images:** `bash compute/scripts/render_og.sh` (needs Google Chrome). This rebuilds `compute/share/*` and the `og/*.png` cards.
-7. **Publish:** commit and push to `master`. Netlify deploys to www.stateof.ai automatically.
-8. If you changed an `og/*.png` that was previously shared, X/LinkedIn may serve a cached card — re-scrape via their card validators if needed.
+6. **Snapshot the data (version history):** `python3 compute/scripts/snapshot_data.py` (infers the month from the `compute.html` cutoff). Writes `compute/data-history/<YYYY-MM>.json` — a pretty-printed copy of the whole `DATA` object — then add a dated entry (old → new, tier, source) to `compute/data-history/CHANGELOG.md`. This is how we keep a browsable history of how each graph changed over time.
+7. **Regenerate the social card images:** `bash compute/scripts/render_og.sh` (needs Google Chrome). This rebuilds `compute/share/*` and the `og/*.png` cards.
+8. **Publish:** commit and push to `master` (or open a PR for review — see §9). Netlify deploys to www.stateof.ai automatically.
+9. If you changed an `og/*.png` that was previously shared, X/LinkedIn may serve a cached card — re-scrape via their card validators if needed.
 
 ## 6. Scripts (`compute/scripts/`)
 
@@ -69,8 +70,10 @@ Run all from the **repo root**.
 - `render_og.sh` — regenerate `compute/share/*` + `og/*.png` (serves the repo, screenshots each chart card with headless Chrome, cleans up the temp `compute/cardgen/`).
 - `build_og.py` — generates the per-chart render pages + share pages from `compute.html` (called by `render_og.sh`).
 - `build_sources.py` — regenerate `compute/sources.html` (edit its source map first).
+- `snapshot_data.py` — snapshot the current `DATA` object into `compute/data-history/<YYYY-MM>.json` (run last, after editing `compute-charts.js`).
 - `data-reference-2026-06.md` — the full June 2026 dataset: every operator, count, tier, and source, with the double-count register. Use as the baseline to diff against next month.
-- `citation-data.json`, `research-topic-data.json` — the June 2026 Zeta Alpha extracts (shape reference for step 2).
+- `citation-data.json`, `research-topic-data.json` — Zeta Alpha extracts (shape reference for step 2; values as of the Oct 2025 report).
+- `../data-history/` — version history of the chart data: one `<YYYY-MM>.json` snapshot per refresh plus `CHANGELOG.md`. See `../data-history/README.md`.
 
 ## 7. GPU-fleet research method
 
@@ -88,7 +91,7 @@ Then: dedupe, apply double-count register, tier by deployed/installing/announced
 - **OG images are static snapshots** — regenerate (step 6) whenever chart data changes.
 - Chart export font sizes scale by `devicePixelRatio` so the title stays larger than axis labels on mobile.
 - Animation is auto-disabled on `/compute/cardgen/` and `/compute/embed/` pages so headless renders/embeds are clean.
-- If a Graphy API key was used to pull citation data: it is **sensitive** — keep it out of the repo and rotate it after use. (Graphy's Agents API only transforms config JSON; it cannot publish to a hosted chart — that's why we self-host.)
+- **Graphy is retired.** All nine charts are self-hosted Chart.js; there are no `visualize.graphy.app` embeds or Graphy API keys anymore. Citation data is maintained inline in `compute-charts.js` (see §5 step 2). If you find a lingering Graphy reference, remove it.
 
 ## 9. Scheduling
 
