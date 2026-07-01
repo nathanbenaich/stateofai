@@ -53,6 +53,7 @@ HOPPER = [
 BWELL = [
  ("Deutsche Telekom Industrial AI Cloud (Munich) — up to 10,000 B200", "Deutsche Telekom", "https://www.telekom.com/en/media/media-information/archive/ai-sovereignty-for-germany-and-europe-1098708"),
  ("SoftBank DGX SuperPOD — >4,000 B200", "SoftBank", "https://www.softbank.jp/en/corp/news/press/sbkk/2025/20250723_01/"),
+ ("Naver Cloud — 4,000 B200 (deployed)", "Data Center Dynamics", "https://www.datacenterdynamics.com/en/news/naver-cloud-completes-cluster-of-4000-nvidia-b200-gpus-in-south-korea/"),
  ("E2E Networks (India) — 1,024 B200", "E2E Networks", "https://www.e2enetworks.com/blog/b200-live-blog"),
  ("SK Telecom Haein — >1,000 B200", "Data Center Dynamics", "https://www.datacenterdynamics.com/en/news/sk-telecom-launches-gpuaas-based-on-nvidia-b200-cluster-in-south-korea/"),
  ("IREN — 50,000 B300 (announced/ordered)", "IREN; SEC filings", "https://investors.iren.com/"),
@@ -72,7 +73,8 @@ GBWELL = [
  ("xAI Colossus 1 — 30,000 GB200", "SemiAnalysis", "https://newsletter.semianalysis.com/p/xais-colossus-2-first-gigawatt-datacenter"),
  ("AWS Project Ceiba — 20,736 GB200 (288 NVL72 racks)", "AWS; Data Center Dynamics", "https://www.datacenterdynamics.com/en/news/aws-upgrades-project-ceiba-to-feature-20736-nvidia-blackwell-gpus-boosting-power-6x-to-414-ai-exaflops/"),
  ("UK Nebius/Nscale — 14,000 Blackwell (announced)", "NVIDIA newsroom", "https://nvidianews.nvidia.com/news/europe-ai-infrastructure"),
- ("Mistral 'Bruno' (France) — 13,800 GB300 (installing)", "Data Center Dynamics", "https://www.datacenterdynamics.com/en/news/mistral-ai-raises-830m-in-debt-financing-for-data-center-in-paris-france/"),
+ ("CoreWeave — 8,192 GB300 NVL72 (deployed; MLPerf Training v6.0)", "CoreWeave", "https://www.coreweave.com/news/coreweave-sets-new-ai-training-records-in-mlperf-r-training-v6-0-training-deepseek-v3-in-approximately-two-minutes"),
+ ("Mistral 'Bruno' (France) — 13,800 GB300 (deployed; Fluidstack-operated)", "Data Center Dynamics", "https://www.datacenterdynamics.com/en/news/mistral-ai-raises-830m-in-debt-financing-for-data-center-in-paris-france/"),
  ("Sines / Start Campus (Microsoft/Nscale, PT) — 12,600 Blackwell Ultra", "Data Center Dynamics", "https://www.datacenterdynamics.com/"),
  ("Taiwan Foxconn 'Big Innovation' — 10,000 GB300 (announced)", "NVIDIA newsroom", "https://nvidianews.nvidia.com/news/foxconn-builds-ai-factory-in-partnership-with-taiwan-and-nvidia"),
  ("IT4LIA AI Factory (Bologna) — 8,000+ GB200 NVL4 (announced)", "EuroHPC JU", "https://www.eurohpc-ju.europa.eu/eurohpc-ju-signs-contract-boost-ai-capabilities-it4lia-ai-factory-2026-04-22_en"),
@@ -86,6 +88,8 @@ DEMAND = [
  ("OpenAI — NVIDIA 10 GW / up to $100B", "NVIDIA newsroom", "https://nvidianews.nvidia.com/news/openai-and-nvidia-announce-strategic-partnership-to-deploy-10gw-of-nvidia-systems"),
  ("OpenAI — Oracle $300B (~4.5 GW, Stargate)", "OpenAI; CNBC", "https://openai.com/index/stargate-advances-with-partnership-with-oracle/"),
  ("OpenAI — Microsoft Azure $250B; AWS $38B; CoreWeave $22.4B", "CNBC ($1T AI deals guide)", "https://www.cnbc.com/2025/10/15/a-guide-to-1-trillion-worth-of-ai-deals-between-openai-nvidia.html"),
+ ("OpenAI — AMD 6 GW / MI450 (non-NVIDIA)", "OpenAI; TechCrunch", "https://openai.com/index/openai-amd-strategic-partnership/"),
+ ("OpenAI — Broadcom 10 GW / custom 'Jalapeño' ASIC (non-NVIDIA)", "OpenAI / Broadcom; CNBC (24 Jun 2026)", "https://www.cnbc.com/2026/06/24/openai-and-broadcom-reveal-jalapeno-first-ai-chip-in-partnership.html"),
  ("Anthropic — Google up to 1M TPU / 3.5-5 GW (non-NVIDIA)", "Anthropic", "https://www.anthropic.com/news/expanding-our-use-of-google-cloud-tpus-and-services"),
  ("Anthropic — AWS Project Rainier ~500k-1M Trainium2 (non-NVIDIA)", "Anthropic", "https://www.anthropic.com/news/anthropic-invests-50-billion-in-american-ai-infrastructure"),
  ("Anthropic — Microsoft Azure + NVIDIA $30B / up to 1 GW", "Microsoft / NVIDIA / Anthropic announcements", None),
@@ -112,7 +116,7 @@ for title, items in charts:
         body_items.append(li(*it))
     body_items.append('</ul>')
 
-intro = '''<p>This page documents the source for each data point in the State of AI Report Compute Index charts. Data cutoff: <b>1 June 2026</b>. GPU-count charts show NVIDIA data-center GPUs (GH200/GB200/GB300 counted as GPU dies; one NVL72 rack = 72 GPUs), split into <b>Deployed / Installing / Announced</b>. Figures are charted by owner/operator; renters are listed separately under the demand-side chart and are not double-counted. National-HPC counts are exact (published); large company, neocloud and sovereign figures are best-available estimates or announced commitments. Where a primary source did not disclose a GPU count, none is invented.</p>'''
+intro = '''<p>This page documents the source for each data point in the State of AI Report Compute Index charts. Data cutoff: <b>1 July 2026</b>. GPU-count charts show NVIDIA data-center GPUs (GH200/GB200/GB300 counted as GPU dies; one NVL72 rack = 72 GPUs), split into <b>Deployed / Installing / Announced</b>. Figures are charted by owner/operator; renters are listed separately under the demand-side chart and are not double-counted. National-HPC counts are exact (published); large company, neocloud and sovereign figures are best-available estimates or announced commitments. Where a primary source did not disclose a GPU count, none is invented.</p>'''
 
 page = f'''<!DOCTYPE html>
 <html lang="en">
@@ -129,7 +133,7 @@ page = f'''<!DOCTYPE html>
         <div class="subtext" style="margin-top:24px">
           {intro}
           {''.join(body_items)}
-          <p style="margin-top:20px;font-size:12px;color:#666">Compiled June 2026. Citation-chart data: Zeta Alpha. Compute-cluster data: operator disclosures, EuroHPC, Top500 (June 2026), SemiAnalysis, The Next Platform, Data Center Dynamics, company earnings and SEC filings, and NVIDIA newsroom. Estimates and announced commitments are labelled as such in the underlying dataset.</p>
+          <p style="margin-top:20px;font-size:12px;color:#666">Compiled July 2026. Citation-chart data: Zeta Alpha (last refreshed with the October 2025 report; no monthly update). Compute-cluster data: operator disclosures, EuroHPC, Top500 (June 2026), SemiAnalysis, The Next Platform, Data Center Dynamics, company earnings and SEC filings, and NVIDIA newsroom. Estimates and announced commitments are labelled as such in the underlying dataset.</p>
         </div>
       </div>
     </div>
