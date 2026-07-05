@@ -70,6 +70,7 @@ Run all from the **repo root**.
 - `render_og.sh` — regenerate `compute/share/*` + `og/*.png` (serves the repo, screenshots each chart card with headless Chrome, cleans up the temp `compute/cardgen/`).
 - `build_og.py` — generates the per-chart render pages + share pages from `compute.html` (called by `render_og.sh`).
 - `build_sources.py` — regenerate `compute/sources.html` (edit its source map first).
+- `validate_data.mjs` — **the verifier gate.** `node compute/scripts/validate_data.mjs` checks the `DATA` object against the §4 rules (schema, no negatives, stacked bars sorted desc by total, tier names/colors, research_topic sort + sign colors, and the renter double-count rule). Exit 0 = safe to open the PR; exit 1 = a gate failed, don't publish. Run it after every data edit and as the loop's gate (§10).
 - `snapshot_data.py` — snapshot the current `DATA` object into `compute/data-history/<YYYY-MM>.json` (run last, after editing `compute-charts.js`).
 - `data-reference-2026-06.md` — the full June 2026 dataset: every operator, count, tier, and source, with the double-count register. Use as the baseline to diff against next month.
 - `citation-data.json`, `research-topic-data.json` — Zeta Alpha extracts (shape reference for step 2; values as of the Oct 2025 report).
@@ -96,3 +97,18 @@ Then: dedupe, apply double-count register, tier by deployed/installing/announced
 ## 9. Scheduling
 
 To run this monthly with an agent: have it execute §5 and open a **branch / PR for review** rather than auto-publishing to `master` — the data has accuracy stakes and the deployed/installing/announced tiering needs judgment. A human approves, then merge → live. (A Claude Code scheduled routine can draft the refresh + PR on the 1st of each month.)
+
+## 10. The refresh loop (maker / checker / gate)
+
+The monthly refresh is run as a **gated loop**, not a one-shot. Three roles, and the gate is what makes it a loop rather than an agent grading its own homework.
+
+- **Maker** — the §7 GPU-fleet research fan-out. One agent per slice (hyperscalers, neoclouds, sovereign HPC, China, startups, crypto-hosts, enterprise). Each returns a sourced table; the driver dedupes, applies the §4 double-count register and tiering, and writes the new `DATA` object into `assets/compute-charts.js`. Only the five GPU-fleet charts change on a monthly run — the four Zeta Alpha citation charts refresh annually with the Report (§5 step 2), so leave them untouched.
+- **Checker** — a *separate* agent, stricter instructions, that never sees the maker's reasoning. Its job is to reject, not to help. It runs `node compute/scripts/validate_data.mjs`, and for every cell that changed vs last month's `data-history/<prev>.json` snapshot, re-opens the cited source URL and confirms the number, tier, and as-of date. Any cell it cannot confirm against a primary source → it strips the change back to the prior value and notes it. Checker prompt template:
+  > You are auditing a proposed monthly update to the State of AI Compute Index. You did NOT gather this data. For each cell that changed vs `compute/data-history/<PREV>.json`, open the source URL in the maker's research table and confirm: the GPU count, the Deployed/Installing/Announced tier, and the as-of date. Apply RUNBOOK §4 rules (NVL72=72; renters go in `demand`, never on the owner's bar; national-HPC exact, company/neocloud estimated; never accept an invented count). Flag every cell you cannot confirm from a primary source. Output: a table of {cell, old, new, verdict: confirmed|revert|uncertain, source-quote}.
+- **The gate** — `validate_data.mjs` (§6). Exit 0 → the driver runs `snapshot_data.py`, `build_sources.py`, `render_og.sh`, and opens the PR with the old→new diff + `CHANGELOG.md` entry in the body. Exit 1 → **no PR**; the driver reports the failing gates instead. Netlify auto-deploys only on merge, so the human approving the PR is the one and only publish step.
+
+**State** = `compute/data-history/` (the prior snapshot + `data-reference-2026-06.md`). The maker diffs against it and moves operators between tiers as builds progress, rather than re-deriving the whole fleet from zero each month.
+
+**Stop condition** = one pass per month → PR or a failure report. The maker never invents a count to "finish" a slice: undisclosed stays null and is flagged in the PR body.
+
+**What the gate does NOT cover** (stays a human call at PR review, per §9): whether a count is actually *true*, and whether the Deployed/Installing/Announced judgment is right. The verifier catches mechanical breakage — schema, sort, double-count, invented negatives, sourcing — not truth. Approve the PR on the numbers, not on green CI alone.
