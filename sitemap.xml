@@ -37,6 +37,12 @@
   <priority>0.7</priority>
 </url>
 <url>
+  <loc>https://www.stateof.ai/predictions/how-accurate-is-the-state-of-ai-report</loc>
+  <lastmod>2026-07-09</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.7</priority>
+</url>
+<url>
   <loc>https://www.stateof.ai/predictions/ai-agents-scientific-discovery</loc>
   <lastmod>2026-07-09</lastmod>
   <changefreq>monthly</changefreq>
@@ -68,6 +74,30 @@
 </url>
 <url>
   <loc>https://www.stateof.ai/predictions/why-we-were-wrong-about-humanoids</loc>
+  <lastmod>2026-07-09</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.6</priority>
+</url>
+<url>
+  <loc>https://www.stateof.ai/predictions/agentic-commerce</loc>
+  <lastmod>2026-07-09</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.6</priority>
+</url>
+<url>
+  <loc>https://www.stateof.ai/predictions/ai-cyber-attack-diplomacy</loc>
+  <lastmod>2026-07-09</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.6</priority>
+</url>
+<url>
+  <loc>https://www.stateof.ai/predictions/federal-vs-state-ai-regulation</loc>
+  <lastmod>2026-07-09</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.6</priority>
+</url>
+<url>
+  <loc>https://www.stateof.ai/predictions/why-we-were-wrong-about-apple</loc>
   <lastmod>2026-07-09</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.6</priority>

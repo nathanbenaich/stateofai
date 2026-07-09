@@ -72,7 +72,8 @@ function localPreviewScript() {
       if (location.hostname !== "www.stateof.ai") {
         document.querySelectorAll('a[href^="https://www.stateof.ai/predictions"]').forEach(function(link) {
           var slug = link.href.replace("https://www.stateof.ai/predictions", "");
-          link.href = slug && slug !== "/" ? slug + (slug.endsWith("/") ? "" : "/") : "/";
+          if (slug.charAt(0) === "#") { link.href = "/" + slug; return; }
+          link.href = slug && slug !== "/" ? slug.split("#")[0] + (slug.split("#")[0].endsWith("/") ? "" : "/") + (slug.indexOf("#") > -1 ? "#" + slug.split("#")[1] : "") : "/";
         });
       }
     </script>`;
@@ -86,10 +87,14 @@ function predictionList(page) {
                 ${page.predictions
                   .map((prediction) => {
                     const statusClass = prediction.status.toLowerCase();
+                    const scorecardLink = prediction.id
+                      ? `<a class="scorecard-link" href="${PREDICTIONS_URL}#${esc(prediction.id)}">View on scorecard</a>`
+                      : "";
                     return `<article class="prediction-quote">
                         <div class="prediction-meta">
                           <a href="${esc(reportUrlForLabel(prediction.label))}" target="_blank" rel="noopener">${esc(prediction.label)}</a>
                           <span class="status ${esc(statusClass)}">${esc(prediction.status)}</span>
+                          ${scorecardLink}
                         </div>
                         <blockquote>${esc(prediction.text)}</blockquote>
                       </article>`;
@@ -97,6 +102,36 @@ function predictionList(page) {
                   .join("")}
               </div>
             </section>`;
+}
+
+function sectionTable(table) {
+  if (!table) return "";
+  const head = `<tr>${table.head.map((cell) => `<th scope="col">${esc(cell)}</th>`).join("")}</tr>`;
+  const rows = table.rows
+    .map((row) => `<tr>${row.map((cell, i) => (i === 0 ? `<th scope="row">${esc(cell)}</th>` : `<td>${esc(cell)}</td>`)).join("")}</tr>`)
+    .join("");
+  return `<figure class="table-wrap">
+        <table class="data-table">
+          ${table.caption ? `<caption>${esc(table.caption)}</caption>` : ""}
+          <thead>${head}</thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </figure>`;
+}
+
+function faqBlock(page) {
+  if (!page.faq || !page.faq.length) return "";
+  return `<section class="essay-block faq-block" aria-labelledby="faq-heading">
+          <h2 id="faq-heading">Frequently Asked Questions</h2>
+          ${page.faq
+            .map(
+              (item) => `<div class="faq-item">
+              <h3>${esc(item.q)}</h3>
+              <p>${richText(item.a)}</p>
+            </div>`
+            )
+            .join("")}
+        </section>`;
 }
 
 function receiptsList(page) {
@@ -128,6 +163,7 @@ function editorialSections(page) {
       (section) => `<section class="essay-block">
           <h2>${esc(section.heading)}</h2>
           ${(section.body || []).map((paragraph) => `<p>${richText(paragraph)}</p>`).join("")}
+          ${sectionTable(section.table)}
         </section>`
     )
     .join("");
@@ -155,57 +191,108 @@ function relatedLinks(page) {
     </aside>`;
 }
 
+function ogImageUrl(page) {
+  return page.ogImage ? `${SITE_URL}/og/${page.ogImage}` : `${SITE_URL}/stateofai-predictions-card.png`;
+}
+
+function faqText(value) {
+  return typeof value === "string" ? value : value.text;
+}
+
 function pageSchema(page, canonical) {
-  return {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Article",
-        "@id": `${canonical}#article`,
-        headline: page.title,
-        alternativeHeadline: page.seoTitle || page.title,
-        description: page.description,
-        abstract: page.answer || page.dek,
-        keywords: page.keywords || [],
-        articleSection: page.type === "track-record" ? "AI prediction track record" : "AI prediction analysis",
-        dateModified: page.lastUpdated,
-        datePublished: page.datePublished || page.lastUpdated,
-        inLanguage: "en",
-        mainEntityOfPage: canonical,
-        isAccessibleForFree: true,
-        image: `${SITE_URL}/stateofai-predictions-card.png`,
-        citation: pageCitations(page),
-        isPartOf: { "@id": `${SITE_URL}/#series` },
-        author: { "@id": `${SITE_URL}/#person-nathan` },
-        publisher: { "@id": `${SITE_URL}/#organization` },
-        about: ["artificial intelligence", "AI predictions", "State of AI Report"],
-      },
-      {
-        "@type": "BreadcrumbList",
-        "@id": `${canonical}#breadcrumb`,
-        itemListElement: [
-          {
-            "@type": "ListItem",
-            position: 1,
-            name: "State of AI Report",
-            item: SITE_URL,
-          },
-          {
-            "@type": "ListItem",
-            position: 2,
-            name: "Predictions",
-            item: PREDICTIONS_URL,
-          },
-          {
-            "@type": "ListItem",
-            position: 3,
-            name: page.title,
-            item: canonical,
-          },
-        ],
-      },
-    ],
-  };
+  const graph = [
+    {
+      "@type": "Article",
+      "@id": `${canonical}#article`,
+      headline: page.title,
+      alternativeHeadline: page.seoTitle || page.title,
+      description: page.description,
+      abstract: page.answer || page.dek,
+      keywords: page.keywords || [],
+      articleSection: page.type === "track-record" ? "AI prediction track record" : "AI prediction analysis",
+      dateModified: page.lastUpdated,
+      datePublished: page.datePublished || page.lastUpdated,
+      inLanguage: "en",
+      mainEntityOfPage: canonical,
+      isAccessibleForFree: true,
+      image: ogImageUrl(page),
+      citation: pageCitations(page),
+      isPartOf: { "@id": `${SITE_URL}/#series` },
+      author: { "@id": `${SITE_URL}/#person-nathan` },
+      publisher: { "@id": `${SITE_URL}/#organization` },
+      about: ["artificial intelligence", "AI predictions", "State of AI Report"],
+    },
+    {
+      "@type": "Person",
+      "@id": `${SITE_URL}/#person-nathan`,
+      name: "Nathan Benaich",
+      url: "https://www.nathanbenaich.com/",
+      jobTitle: "Founder and General Partner",
+      worksFor: { "@id": `${SITE_URL}/#organization` },
+      sameAs: [
+        "https://www.nathanbenaich.com/",
+        "https://x.com/nathanbenaich",
+        "https://www.linkedin.com/in/nathanbenaich/",
+      ],
+    },
+    {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
+      name: "Air Street Capital",
+      url: "https://www.airstreet.com/",
+      sameAs: [
+        "https://www.airstreet.com/",
+        "https://x.com/airstreet",
+        "https://www.linkedin.com/company/air-street-capital",
+        "https://press.airstreet.com/",
+      ],
+    },
+    {
+      "@type": "CreativeWorkSeries",
+      "@id": `${SITE_URL}/#series`,
+      name: "State of AI Report",
+      url: `${SITE_URL}/`,
+      creator: { "@id": `${SITE_URL}/#person-nathan` },
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${canonical}#breadcrumb`,
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "State of AI Report",
+          item: SITE_URL,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Predictions",
+          item: PREDICTIONS_URL,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: page.title,
+          item: canonical,
+        },
+      ],
+    },
+  ];
+
+  if (page.faq && page.faq.length) {
+    graph.push({
+      "@type": "FAQPage",
+      "@id": `${canonical}#faq`,
+      mainEntity: page.faq.map((item) => ({
+        "@type": "Question",
+        name: item.q,
+        acceptedAnswer: { "@type": "Answer", text: faqText(item.a) },
+      })),
+    });
+  }
+
+  return { "@context": "https://schema.org", "@graph": graph };
 }
 
 function renderPage(page) {
@@ -250,14 +337,16 @@ function renderPage(page) {
     <meta name="twitter:creator" content="@stateofaireport" />
     <meta property="twitter:title" content="${esc(page.title)}" />
     <meta property="twitter:description" content="${esc(page.description)}" />
-    <meta property="twitter:image" content="https://www.stateof.ai/stateofai-predictions-card.png" />
+    <meta property="twitter:image" content="${esc(ogImageUrl(page))}" />
     <meta property="og:url" content="${canonical}" />
+    <meta property="og:site_name" content="State of AI Report" />
     <meta property="og:title" content="${esc(page.title)}" />
     <meta property="og:description" content="${esc(page.description)}" />
-    <meta property="og:image" content="https://www.stateof.ai/stateofai-predictions-card.png">
+    <meta property="og:image" content="${esc(ogImageUrl(page))}">
     <meta property="og:type" content="article" />
     <meta property="article:published_time" content="${esc(page.datePublished || page.lastUpdated)}" />
     <meta property="article:modified_time" content="${esc(page.lastUpdated)}" />
+    <meta property="article:author" content="Nathan Benaich" />
     <meta property="article:section" content="State of AI Report Predictions" />
     <style>
       :root{ --ink:#161e59; --orange:#ff9900; --muted:#6b7080; --line:#e2e1de; --paper:#f8faf9; --soft:#eceef3; --green:#2f7d4f; --red:#9c3a2a; }
@@ -270,7 +359,22 @@ function renderPage(page) {
       .prediction-nav .button{ height:auto; min-height:2.35em; margin:0; white-space:nowrap; }
       .essay-title{ color:var(--ink) !important; font-family:'Francois One',Impact,'Arial Narrow',sans-serif; font-size:3rem; font-weight:600; line-height:1.125; margin:0 auto 18px !important; text-align:center; max-width:920px; letter-spacing:0; }
       .essay-title .dot{ color:var(--orange); }
-      .essay-dek{ max-width:760px; margin:0 auto 28px; color:#33384d; font-size:1.2rem; line-height:1.55; text-align:center; }
+      .essay-dek{ max-width:760px; margin:0 auto 16px; color:#33384d; font-size:1.2rem; line-height:1.55; text-align:center; }
+      .essay-byline{ text-align:center; color:var(--muted); font-size:13.5px; margin:0 0 28px; }
+      .essay-byline a{ color:var(--ink); font-weight:700; text-decoration:none; }
+      .essay-byline a:hover{ color:var(--orange); }
+      .scorecard-link{ margin-left:auto; color:var(--muted); font-size:11.5px; font-weight:700; text-decoration:underline; text-decoration-color:var(--line); text-underline-offset:2px; }
+      .scorecard-link:hover{ color:var(--orange); }
+      .table-wrap{ margin:18px 0 6px; overflow-x:auto; }
+      .data-table{ width:100%; border-collapse:collapse; background:#fff; border:1px solid var(--line); font-size:.95rem; }
+      .data-table caption{ caption-side:bottom; text-align:left; color:var(--muted); font-size:12px; padding:8px 2px 0; }
+      .data-table th, .data-table td{ border:1px solid var(--line); padding:8px 11px; text-align:right; color:#33384d; }
+      .data-table thead th{ background:var(--soft); color:var(--ink); font-size:11.5px; text-transform:uppercase; letter-spacing:.06em; }
+      .data-table th[scope=row]{ text-align:left; color:var(--ink); font-weight:700; }
+      .data-table tbody tr:last-child th, .data-table tbody tr:last-child td{ font-weight:700; }
+      .faq-block .faq-item{ border:1px solid var(--line); border-radius:7px; background:#fff; padding:14px 18px; margin:0 0 10px; }
+      .faq-block h3{ color:var(--ink); font-weight:700; font-size:1.05rem; line-height:1.4; margin:0 0 7px; }
+      .faq-block p{ margin:0; }
       .lead-block{ border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:24px 0; margin:6px 0 30px; }
       .lead-block p{ margin:0 0 14px; color:#33384d; font-size:1.08rem; line-height:1.62; }
       .lead-block p:last-child{ margin-bottom:0; }
@@ -332,12 +436,14 @@ function renderPage(page) {
             <article>
               <h1 class="essay-title">${esc(page.title)}<span class="dot">.</span></h1>
               <p class="essay-dek">${esc(page.dek)}</p>
+              <p class="essay-byline">By <a href="https://www.nathanbenaich.com/" rel="author">Nathan Benaich</a>, Air Street Capital &middot; Published ${esc(page.datePublished || page.lastUpdated)} &middot; Updated ${esc(page.lastUpdated)}</p>
               ${page.answer ? `<section class="answer-block" aria-labelledby="answer-heading"><h2 id="answer-heading">In brief</h2><p>${richText(page.answer)}</p></section>` : ""}
 ${page.lead ? `<section class="lead-block">${page.lead.map((paragraph) => `<p>${richText(paragraph)}</p>`).join("")}</section>` : ""}
               ${isTrackRecord ? receiptsList(page) : predictionList(page)}
 ${editorialSections(page)}
+              ${faqBlock(page)}
               ${relatedLinks(page)}
-              <p class="essay-footer-note">Last updated ${esc(page.lastUpdated)}. Verdicts and predictions are drawn from the annual State of AI Report and the public predictions scorecard.</p>
+              <p class="essay-footer-note">Last updated ${esc(page.lastUpdated)}. Verdicts and predictions are drawn from the annual State of AI Report and the <a href="${PREDICTIONS_URL}">public predictions scorecard</a>. Grading rules and hit rates: <a href="${PREDICTIONS_URL}/how-accurate-is-the-state-of-ai-report">how accurate is the State of AI Report?</a></p>
             </article>
           </div>
         </div>

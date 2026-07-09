@@ -21,6 +21,17 @@ Key terms: State of AI Report, AI Benchmarks, AI Compute Index, State of AI Pred
 - [Compute Index](https://www.stateof.ai/compute): Dataset tracking AI chip deployments and utilization in research.
 - [Predictions Index](https://www.stateof.ai/predictions): Public scorecard for every State of AI Report prediction since 2018, with a live crowd forecast, a track-record page, and narrative essays on selected prediction themes.
 - [Calls We Got Right](https://www.stateof.ai/predictions/calls-we-got-right): Evidence-led track record of major State of AI Report predictions that resolved correctly, framed as pattern recognition rather than a victory lap.
+- [How Accurate Is the State of AI Report?](https://www.stateof.ai/predictions/how-accurate-is-the-state-of-ai-report): Full accuracy audit: 59 predictions graded since 2018 (31 hits, 8 partials, 20 misses; 53% strict hit rate, 59% with partial credit), with hit rates by year and topic and the grading methodology.
+- [Can AI Agents Make Scientific Discoveries?](https://www.stateof.ai/predictions/ai-agents-scientific-discovery): Prediction essay on what would count as an end-to-end AI scientific discovery and the evidence so far.
+- [Open Models Are Now Geopolitics](https://www.stateof.ai/predictions/open-models-geopolitics): Prediction essay on open-weight models as industrial policy and the US-China distribution race.
+- [AI Infrastructure Is Becoming Local Politics](https://www.stateof.ai/predictions/ai-infrastructure-politics): Prediction essay on data center electricity, water, permitting, and the 2025-2026 US elections.
+- [The Next AI Backlash Will Be Cultural](https://www.stateof.ai/predictions/ai-media-backlash): Prediction essay on AI film, games, and media winning audiences while sparking labor and authorship backlash.
+- [Could China Take the Frontier AI Lead?](https://www.stateof.ai/predictions/china-frontier-ai-lead): Prediction essay on Chinese frontier models, leaderboards, and the narrowing US-China gap.
+- [Will AI Agents Do Your Shopping?](https://www.stateof.ai/predictions/agentic-commerce): Prediction essay on agentic commerce, ChatGPT Instant Checkout, the Agentic Commerce Protocol, and the 5% of online sales test.
+- [When Does an AI Attack Become a Diplomatic Incident?](https://www.stateof.ai/predictions/ai-cyber-attack-diplomacy): Prediction essay on AI-orchestrated cyberattacks, deepfake security threats, and the first emergency NATO or UN debate on AI.
+- [Who Gets to Regulate AI in America?](https://www.stateof.ai/predictions/federal-vs-state-ai-regulation): Prediction essay on Trump's December 2025 executive order against state AI laws and the constitutional fight over preemption.
+- [Why We Were Wrong About Humanoids](https://www.stateof.ai/predictions/why-we-were-wrong-about-humanoids): Post-mortem on the missed humanoid investment call and what it says about capital versus product-market fit.
+- [Why We Were Wrong About Apple](https://www.stateof.ai/predictions/why-we-were-wrong-about-apple): Post-mortem on the missed Apple on-device AI call: right trend, wrong protagonist, ending in Apple's $1B/year Gemini deal.
 - [Benchmarks Tracker](https://www.stateof.ai/): Overview of key LLM and multimodal model evaluations.
 - [Guide to AI Newsletter](https://nathanbenaich.substack.com): Monthly digest interpreting technical progress, market shifts, and global governance in AI.
 - [London.AI](https://london.ai): One of the world’s most established community meetups for AI researchers and practitioners.

@@ -169,6 +169,7 @@
           .pcard{ border:1px solid #e2e1de; border-radius:8px; padding:14px 16px; background:#fff; position:relative; }
           .pcard::before{ content:""; position:absolute; left:0; top:13px; bottom:13px; width:3px; border-radius:3px; background:#e2e1de; }
           .pcard.hit::before{ background:#2f7d4f; } .pcard.partial::before{ background:#b07d18; } .pcard.miss::before{ background:#9c3a2a; } .pcard.pending::before{ background:#161e59; }
+          .pcard.targeted{ outline:2px solid #ff9900; outline-offset:2px; }
           .pcard .meta{ display:flex; align-items:center; gap:8px; margin-bottom:8px; flex-wrap:wrap; }
           .chip{ font-size:11px; padding:2px 9px; border-radius:4px; background:#eceef3; color:#6b7080; border:1px solid #e2e1de; }
           .badge{ font-size:10px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; padding:3px 8px; border-radius:4px; display:inline-flex; align-items:center; gap:5px; }
@@ -267,7 +268,7 @@
               <div class="pred">
                 <div class="statband">
                   <div class="sbig"><div class="sbignum" id="sb-rate">53%</div><div class="sbiglab">hit rate</div></div>
-                  <div class="sbsub"><b id="sb-graded">59</b> forecasts graded since 2018<br><b id="sb-credit">66%</b> with partial credit &middot; <b id="sb-pending">10</b> open for 2026</div>
+                  <div class="sbsub"><b id="sb-graded">59</b> forecasts graded since 2018<br><b id="sb-credit">59%</b> with partial credit &middot; <b id="sb-pending">10</b> open for 2026<br><a href="https://www.stateof.ai/predictions/how-accurate-is-the-state-of-ai-report">How we grade, and where we are wrong</a></div>
                   <div class="chart-tools"><button class="chart-btn" data-act="download" title="Download share card">&#11015; Download</button><button class="chart-btn" data-act="share" title="Share">&#8599; Share</button></div>
                 </div>
 
@@ -302,7 +303,12 @@
                     <a class="essay-card" href="https://www.stateof.ai/predictions/ai-infrastructure-politics"><b>AI infrastructure is becoming local politics</b><span>Compute meets power, land, water, voters, and permits.</span></a>
                     <a class="essay-card" href="https://www.stateof.ai/predictions/ai-media-backlash"><b>The next AI backlash will be cultural</b><span>When audiences like the work and dislike how it was made.</span></a>
                     <a class="essay-card" href="https://www.stateof.ai/predictions/china-frontier-ai-lead"><b>Could China take the frontier AI lead?</b><span>Why a public leaderboard moment would matter.</span></a>
+                    <a class="essay-card" href="https://www.stateof.ai/predictions/agentic-commerce"><b>Will AI agents do your shopping?</b><span>Instant Checkout, agent payments, and the 5% test.</span></a>
+                    <a class="essay-card" href="https://www.stateof.ai/predictions/ai-cyber-attack-diplomacy"><b>When does an AI attack become a diplomatic incident?</b><span>AI-run espionage is real; the emergency debate is not, yet.</span></a>
+                    <a class="essay-card" href="https://www.stateof.ai/predictions/federal-vs-state-ai-regulation"><b>Who gets to regulate AI in America?</b><span>The executive order landed. The courts decide the rest.</span></a>
                     <a class="essay-card" href="https://www.stateof.ai/predictions/why-we-were-wrong-about-humanoids"><b>Why we were wrong about humanoids</b><span>A useful miss about capital, platforms, and robotics.</span></a>
+                    <a class="essay-card" href="https://www.stateof.ai/predictions/why-we-were-wrong-about-apple"><b>Why we were wrong about Apple</b><span>Right trend, wrong protagonist, and a $1B Gemini deal.</span></a>
+                    <a class="essay-card" href="https://www.stateof.ai/predictions/how-accurate-is-the-state-of-ai-report"><b>How accurate is the State of AI Report?</b><span>Hit rates by year and topic, and how we grade ourselves.</span></a>
                   </div>
                 </div>
 
@@ -463,17 +469,21 @@ const NARRATIVE_BY_ID={
   "P2024-1":"ai-infrastructure-politics",
   "P2024-5":"calls-we-got-right",
   "P2024-7":"why-we-were-wrong-about-humanoids",
+  "P2024-8":"why-we-were-wrong-about-apple",
   "P2024-9":"calls-we-got-right",
+  "P2025-1":"agentic-commerce",
   "P2025-2":"open-models-geopolitics",
   "P2025-3":"ai-agents-scientific-discovery",
+  "P2025-4":"ai-cyber-attack-diplomacy",
   "P2025-5":"ai-media-backlash",
   "P2025-6":"ai-infrastructure-politics",
   "P2025-7":"ai-media-backlash",
   "P2025-8":"china-frontier-ai-lead",
-  "P2025-9":"ai-infrastructure-politics"
+  "P2025-9":"ai-infrastructure-politics",
+  "P2025-10":"federal-vs-state-ai-regulation"
 };
 function detailHref(slug){return location.hostname==="www.stateof.ai"?`https://www.stateof.ai/predictions/${slug}`:`/${slug}/`;}
-function detailLink(d){const slug=NARRATIVE_BY_ID[d.id];if(!slug)return "";const label=slug==="calls-we-got-right"?"Read receipt":slug==="why-we-were-wrong-about-humanoids"?"Read post-mortem":"Read essay";return `<a class="detail-link" href="${detailHref(slug)}">${label}</a>`;}
+function detailLink(d){const slug=NARRATIVE_BY_ID[d.id];if(!slug)return "";const label=slug==="calls-we-got-right"?"Read receipt":slug.indexOf("why-we-were-wrong")===0?"Read post-mortem":"Read essay";return `<a class="detail-link" href="${detailHref(slug)}">${label}</a>`;}
 let F={status:"all",year:"all",topic:"all",q:""};
 const $=s=>document.querySelector(s);
 const tally=a=>{const c={hit:0,partial:0,miss:0,pending:0};a.forEach(d=>c[d.s]++);return c;};
@@ -513,7 +523,7 @@ async function rpc(fn,args){
   if(!r.ok) throw new Error('rpc '+fn+' '+r.status); return r.json();
 }
 async function loadTallies(){
-  try{const rows=await rpc('predictions_tally',{}); const v={}; rows.forEach(r=>v[r.prediction_id]={up:r.up,down:r.down}); VOTES=v; renderPending2026(); renderCards();}catch(e){}
+  try{const rows=await rpc('predictions_tally',{}); const v={}; rows.forEach(r=>v[r.prediction_id]={up:r.up,down:r.down}); VOTES=v; renderPending2026(); renderCards(); highlightHash(false);}catch(e){}
 }
 function paintVote(id){
   const wrap=document.querySelector(`.vote[data-id="${id}"]`); if(!wrap)return;
@@ -559,7 +569,7 @@ function renderCards(){
   const gradedTotal=DATA.filter(d=>d.s!=="pending").length;
   $("#count").textContent=`${arr.length} of ${gradedTotal}`;
   if(!arr.length){$("#cards").innerHTML='<div class="empty">No predictions match these filters.</div>';return;}
-  $("#cards").innerHTML=arr.map(d=>`<div class="pcard ${d.s}">
+  $("#cards").innerHTML=arr.map(d=>`<div class="pcard ${d.s}" id="${d.id}">
     <div class="meta"><span class="yspan">${d.y} → ${d.r}</span><span class="chip">${d.t}</span><span class="badge ${d.s}"><span class="bd"></span>${LABELS[d.s]}</span></div>
     <p class="txt">${d.x}</p>${d.s==='pending'?`<p class="resolve">Resolves in the 2026 Report.</p>`+detailLink(d)+voteBlock(d.id):`<p class="just">${d.j}</p>`+detailLink(d)}</div>`).join("");
   wireVotes();
@@ -587,12 +597,21 @@ function renderStatband(){
 }
 function renderPending2026(){
   const el=$("#pending2026"); if(!el)return;
-  el.innerHTML=DATA.filter(d=>d.s==="pending").map(d=>`<div class="pcard ${d.s}">
+  el.innerHTML=DATA.filter(d=>d.s==="pending").map(d=>`<div class="pcard ${d.s}" id="${d.id}">
     <div class="meta"><span class="yspan">${d.y} \u2192 ${d.r}</span><span class="chip">${d.t}</span><span class="badge ${d.s}"><span class="bd"></span>${LABELS[d.s]}</span></div>
     <p class="txt">${d.x}</p><p class="resolve">Resolves in the 2026 Report.</p>`+detailLink(d)+voteBlock(d.id)+`</div>`).join("");
   wireVotes();
 }
+function highlightHash(scroll){
+  if(!location.hash)return;
+  const target=document.getElementById(location.hash.slice(1));
+  if(target&&target.classList.contains("pcard")){
+    target.classList.add("targeted");
+    if(scroll)setTimeout(()=>target.scrollIntoView({behavior:"smooth",block:"center"}),60);
+  }
+}
 buildControls();renderStatband();renderPending2026();renderCards();loadTallies();
+highlightHash(true);
 if(location.hostname!=="www.stateof.ai"){
   document.querySelectorAll('a[href^="https://www.stateof.ai/predictions"]').forEach(link=>{
     const slug=link.href.replace("https://www.stateof.ai/predictions","");

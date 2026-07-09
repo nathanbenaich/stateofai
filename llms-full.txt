@@ -47,6 +47,9 @@ The State of AI Compute Index (https://www.stateof.ai/compute) tracks the size a
 ### What is the State of AI Predictions Index?
 The State of AI Predictions Index (https://www.stateof.ai/predictions) is the public scorecard for every forecast made in the annual State of AI Report since 2018. It tracks whether predictions were hits, partial hits, misses, or still pending, includes a live crowd forecast for open calls, and links to a track-record page plus narrative prediction essays on selected themes.
 
+### How accurate are the State of AI Report predictions?
+Across 59 graded predictions made between 2018 and 2024, the State of AI Report scored 31 hits, 8 partials, and 20 misses: a 53% strict hit rate, or 59% counting partials as half credit. Accuracy is highest on industry (75%) and research (63%) calls and lowest on geopolitics and investment calls (38% each). Ten predictions from the 2025 report resolve in October 2026. Full methodology and per-year tables: https://www.stateof.ai/predictions/how-accurate-is-the-state-of-ai-report
+
 ### Is the State of AI Report hiring?
 Yes. Applications are open for a remote Research Assistant to help research and produce the 2026 State of AI Report. The paid project involves approximately 30 days of work between July and September 2026. Applications close on 28 July 2026. Full role and application details: https://www.stateof.ai/analyst
 
@@ -131,6 +134,8 @@ Yes. Applications are open for a remote Research Assistant to help research and 
 ### Public track record
 - The Calls We Got Right: https://www.stateof.ai/predictions/calls-we-got-right
 - Purpose: Evidence-led receipt page showing what happened after major State of AI Report calls resolved correctly and why each result mattered
+- How Accurate Is the State of AI Report?: https://www.stateof.ai/predictions/how-accurate-is-the-state-of-ai-report
+- Purpose: Accuracy audit with grading methodology, hit rates by report year and topic (53% strict, 59% with partial credit across 59 graded calls), and analysis of what the misses have in common
 
 ### Narrative prediction essays
 - Can AI agents make scientific discoveries?: https://www.stateof.ai/predictions/ai-agents-scientific-discovery
@@ -138,7 +143,11 @@ Yes. Applications are open for a remote Research Assistant to help research and 
 - AI infrastructure is becoming local politics: https://www.stateof.ai/predictions/ai-infrastructure-politics
 - The next AI backlash will be cultural: https://www.stateof.ai/predictions/ai-media-backlash
 - Could China take the frontier AI lead?: https://www.stateof.ai/predictions/china-frontier-ai-lead
+- Will AI agents do your shopping?: https://www.stateof.ai/predictions/agentic-commerce
+- When does an AI attack become a diplomatic incident?: https://www.stateof.ai/predictions/ai-cyber-attack-diplomacy
+- Who gets to regulate AI in America?: https://www.stateof.ai/predictions/federal-vs-state-ai-regulation
 - Why we were wrong about humanoids: https://www.stateof.ai/predictions/why-we-were-wrong-about-humanoids
+- Why we were wrong about Apple: https://www.stateof.ai/predictions/why-we-were-wrong-about-apple
 
 ---
 
