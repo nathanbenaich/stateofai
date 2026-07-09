@@ -10,8 +10,8 @@ https://zealous-murdock-8941c6.netlify.app/* https://www.stateof.ai/:splat 301!
 # Redirect survey
 https://www.stateof.ai/survey/* https://airstreet.typeform.com/survey:splat 301!
 
-# Redirect analyst, talent, and subscribe pages (replacing meta refresh redirects with proper 301s)
-/analyst https://docs.google.com/document/d/1tsRt18zbxrAQ3EkiKmgGvPGduqUzZYJW5AHmFEqaKpY/edit?usp=sharing 301!
+# Serve analyst metadata before redirecting; talent and subscribe use permanent redirects
+/analyst /analyst.html 200!
 /talent https://docs.google.com/document/d/1tsRt18zbxrAQ3EkiKmgGvPGduqUzZYJW5AHmFEqaKpY/edit 301!
 /subscribe https://stateofai.substack.com/ 301!
 

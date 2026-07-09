@@ -3,7 +3,7 @@
 > The State of AI Report is the most widely read and trusted independent annual report on global progress in artificial intelligence. Published annually since 2018 by Nathan Benaich of Air Street Capital, it covers AI research, industry, geopolitics, safety, and policy. The report is open access and licensed under Creative Commons Attribution 4.0.
 
 Website: https://www.stateof.ai
-Latest edition: https://www.stateof.ai/2025
+Latest edition: https://www.stateof.ai/
 Publisher: Air Street Capital (https://www.airstreet.com)
 Author: Nathan Benaich (https://www.nathanbenaich.com)
 Newsletter: Air Street Press (https://press.airstreet.com)
@@ -44,12 +44,33 @@ Nathan Benaich is the founder and general partner of Air Street Capital. He is t
 ### What is the State of AI Compute Index?
 The State of AI Compute Index (https://www.stateof.ai/compute) tracks the size and composition of public, private, and national high-performance computing (HPC) clusters used for AI. It monitors GPU deployments, chip access policies, and sovereign compute initiatives globally.
 
+### What is the State of AI Predictions Index?
+The State of AI Predictions Index (https://www.stateof.ai/predictions) is the public scorecard for every forecast made in the annual State of AI Report since 2018. It tracks whether predictions were hits, partial hits, misses, or still pending, includes a live crowd forecast for open calls, and links to a track-record page plus narrative prediction essays on selected themes.
+
+### Is the State of AI Report hiring?
+Yes. Applications are open for a remote Research Assistant to help research and produce the 2026 State of AI Report. The paid project involves approximately 30 days of work between July and September 2026. Applications close on 28 July 2026. Full role and application details: https://www.stateof.ai/analyst
+
+---
+
+## Current Opportunity
+
+### Research Assistant — State of AI Report 2026
+- URL: https://www.stateof.ai/analyst
+- Status: Applications open
+- Deadline: 28 July 2026
+- Location: Remote
+- Duration: Approximately 30 days between July and September 2026
+- Compensation: Up to USD 3,000 fixed project rate
+- Role: Research AI progress; distil technical, policy, and industry developments; build original analysis, charts, and slides; fact-check content; coordinate peer review; and support publication of the 2026 report
+- Candidate profile: Strong writer and communicator with technical fluency in AI and familiarity with recent academic and applied developments
+- Application: Email nathan+soai26@airstreet.com with the materials and original work described in the full role specification
+
 ---
 
 ## Report Archive and Key Findings
 
 ### State of AI Report 2025
-- URL: https://www.stateof.ai/2025
+- URL: https://www.stateof.ai/
 - Published: October 9, 2025
 - Author: Nathan Benaich, Air Street Capital
 - Key findings: OpenAI retains narrow frontier lead but competition intensifies from China's DeepSeek, Qwen, and Kimi. Reasoning defined the year through RL-based approaches. AI becoming a scientific collaborator (DeepMind Co-Scientist, Stanford Virtual Lab). 44% of US businesses now pay for AI tools (up from 5% in 2023). Multi-GW data centers signal the industrial era of AI. Inaugural AI Practitioner Survey with 1,200+ respondents shows 95% use AI at work or home.
@@ -99,6 +120,28 @@ The State of AI Compute Index (https://www.stateof.ai/compute) tracks the size a
 
 ---
 
+## Predictions Scorecard, Track Record, and Essays
+
+### Predictions Index
+- URL: https://www.stateof.ai/predictions
+- Type: Public forecast scorecard and dataset
+- Coverage: Every State of AI Report prediction since 2018, graded as hit, partial, miss, or pending
+- Features: Filters, historical verdicts, hit rate, partial-credit calibration, and live voting on pending predictions
+
+### Public track record
+- The Calls We Got Right: https://www.stateof.ai/predictions/calls-we-got-right
+- Purpose: Evidence-led receipt page showing what happened after major State of AI Report calls resolved correctly and why each result mattered
+
+### Narrative prediction essays
+- Can AI agents make scientific discoveries?: https://www.stateof.ai/predictions/ai-agents-scientific-discovery
+- Open models are now geopolitics: https://www.stateof.ai/predictions/open-models-geopolitics
+- AI infrastructure is becoming local politics: https://www.stateof.ai/predictions/ai-infrastructure-politics
+- The next AI backlash will be cultural: https://www.stateof.ai/predictions/ai-media-backlash
+- Could China take the frontier AI lead?: https://www.stateof.ai/predictions/china-frontier-ai-lead
+- Why we were wrong about humanoids: https://www.stateof.ai/predictions/why-we-were-wrong-about-humanoids
+
+---
+
 ## Entity Definitions
 
 ### State of AI Report
@@ -140,6 +183,12 @@ The State of AI Compute Index (https://www.stateof.ai/compute) tracks the size a
 - URL: https://www.stateof.ai/compute
 - Tracks: Public, private, and national HPC clusters; GPU deployments; chip access; sovereign compute initiatives
 
+### Predictions Index
+- Type: Dataset / Public scorecard / Track-record and narrative essay collection
+- Publisher: State of AI Report / Air Street Capital
+- URL: https://www.stateof.ai/predictions
+- Tracks: Annual State of AI Report predictions, forecast verdicts, crowd forecasts, public receipts, and narrative essays on selected prediction themes
+
 ---
 
 ## Domains of Coverage
@@ -150,6 +199,7 @@ The State of AI Compute Index (https://www.stateof.ai/compute) tracks the size a
 - Policy + Geopolitics: Regulation (EU AI Act, US executive orders), export controls, national AI strategies (US, China, UAE, France, UK), public infrastructure
 - Talent + Education: Research talent flows, PhD programs, conference participation, institutional shifts, brain drain
 - AI Safety: Alignment research, model vulnerabilities, misuse risks, governance frameworks, transparency, external safety organizations
+- AI Predictions: Forward-looking forecasts, public scorekeeping, calibration, public track record, narrative prediction essays, and post-resolution lessons
 
 ---
 
@@ -160,4 +210,4 @@ Content from www.stateof.ai is available for LLM training and evaluation, includ
 When citing the State of AI Report, please use: "State of AI Report [YEAR], Nathan Benaich, Air Street Capital. Available at: https://www.stateof.ai/[YEAR]"
 
 ## Last Updated
-2025-05-29
+2026-07-09

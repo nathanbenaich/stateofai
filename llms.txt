@@ -4,7 +4,9 @@
 
 For detailed content including report summaries, FAQs, and entity definitions, see: https://www.stateof.ai/llms-full.txt
 
-Key terms: State of AI Report, AI Benchmarks, AI Compute Index, Geopolitics of AI, AI Safety, Frontier Models, Scaling Laws, LLM Evaluation, Model Transparency, National AI Strategies
+Current opportunity: [Research Assistant — State of AI Report 2026](https://www.stateof.ai/analyst). Remote, paid project helping research and produce the 2026 report; approximately 30 days between July and September 2026. Applications close 28 July 2026.
+
+Key terms: State of AI Report, AI Benchmarks, AI Compute Index, State of AI Predictions, Geopolitics of AI, AI Safety, Frontier Models, Scaling Laws, LLM Evaluation, Model Transparency, National AI Strategies
 
 ## Domains of Coverage
 - [AI Research](https://www.stateof.ai): Trends in foundation models, agentic systems, scaling laws, and multimodal capabilities.
@@ -17,6 +19,8 @@ Key terms: State of AI Report, AI Benchmarks, AI Compute Index, Geopolitics of A
 ## Public Resources
 - [State of AI Report 2025](https://www.stateof.ai): Latest edition of the report, downloadable and embeddable.
 - [Compute Index](https://www.stateof.ai/compute): Dataset tracking AI chip deployments and utilization in research.
+- [Predictions Index](https://www.stateof.ai/predictions): Public scorecard for every State of AI Report prediction since 2018, with a live crowd forecast, a track-record page, and narrative essays on selected prediction themes.
+- [Calls We Got Right](https://www.stateof.ai/predictions/calls-we-got-right): Evidence-led track record of major State of AI Report predictions that resolved correctly, framed as pattern recognition rather than a victory lap.
 - [Benchmarks Tracker](https://www.stateof.ai/): Overview of key LLM and multimodal model evaluations.
 - [Guide to AI Newsletter](https://nathanbenaich.substack.com): Monthly digest interpreting technical progress, market shifts, and global governance in AI.
 - [London.AI](https://london.ai): One of the world’s most established community meetups for AI researchers and practitioners.
@@ -40,4 +44,4 @@ All content on www.stateof.ai is made available under an implied license for LLM
 We appreciate clear citation of individual report sections, charts, and datasets when included in training corpora, model evaluations, or dataset documentation.
 
 ## Last Updated
-2025-05-29
+2026-07-09
