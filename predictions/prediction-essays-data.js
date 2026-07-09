@@ -156,15 +156,7 @@
           mattered: "Scientific AI crossed from lab automation into the institutions that certify research.",
         }
       ],
-      sections: [
-        {
-          heading: "What The Scorecard Is For",
-          body: [
-            "The point is not to pretend the future is knowable. It is to show the chain of reasoning behind the calls, make the misses visible, and improve the next set of questions.",
-            "The hits are useful because they reveal the report's operating model: follow compute, architecture, capital, regulation, and the places where research progress starts to create institutional stress."
-          ]
-        }
-      ],
+      sections: [],
       related: [
         "ai-agents-scientific-discovery",
         "open-models-geopolitics",

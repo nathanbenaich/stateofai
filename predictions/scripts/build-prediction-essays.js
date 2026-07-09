@@ -335,7 +335,7 @@ function renderPage(page) {
               ${page.answer ? `<section class="answer-block" aria-labelledby="answer-heading"><h2 id="answer-heading">In brief</h2><p>${richText(page.answer)}</p></section>` : ""}
 ${page.lead ? `<section class="lead-block">${page.lead.map((paragraph) => `<p>${richText(paragraph)}</p>`).join("")}</section>` : ""}
               ${isTrackRecord ? receiptsList(page) : predictionList(page)}
-              ${editorialSections(page)}
+${editorialSections(page)}
               ${relatedLinks(page)}
               <p class="essay-footer-note">Last updated ${esc(page.lastUpdated)}. Verdicts and predictions are drawn from the annual State of AI Report and the public predictions scorecard.</p>
             </article>
