@@ -16,5 +16,5 @@ https://www.stateof.ai/survey/* https://airstreet.typeform.com/survey:splat 301!
 /subscribe https://stateofai.substack.com/ 301!
 
 # State of AI predictions app (served from the stateofai-predictions Netlify site)
-/predictions      https://stateofai-predictions.netlify.app/        200
-/predictions/*    https://stateofai-predictions.netlify.app/:splat   200
+/predictions      https://stateofai-predictions.netlify.app/        200!
+/predictions/*    https://stateofai-predictions.netlify.app/:splat   200!
