@@ -74,7 +74,7 @@
       lastUpdated: "2026-07-09",
       answer: "The State of AI Report's strongest calls anticipated transformers moving into vision, the collapse of NVIDIA's Arm deal, hyperscaler investment in frontier labs, regulatory scrutiny of AI partnerships, and the rapid rise of open reasoning models.",
       lead: [
-        "Prediction is not the point of the State of AI Report. The point is taste under uncertainty: noticing which weak signals are turning into the structure of the field.",
+        "Every State of AI Report closes with predictions for the year ahead, written to be graded. Anyone can narrate what just happened in AI; committing to what happens next, with a date on it, is harder. That is the point.",
         linked("The full ledger is public: 59 predictions graded since 2018, of which 31 resolved as hits, 8 as partials, and 20 as misses. That is a 53% strict hit rate, or 59% with half credit for partials. How we grade, and where our judgment is weakest, is documented in the accuracy analysis.", [
           { text: "accuracy analysis", url: SOURCES.accuracy }
         ]),
