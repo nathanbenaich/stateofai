@@ -268,7 +268,7 @@ function renderPage(page) {
       .prediction-shell{ max-width:880px; margin:0 auto; }
       .prediction-nav{ display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin:0 0 28px; }
       .prediction-nav .button{ height:auto; min-height:2.35em; margin:0; white-space:nowrap; }
-      .essay-title{ color:var(--ink) !important; font-family:'Francois One',Impact,'Arial Narrow',sans-serif; font-size:2rem; font-weight:600; line-height:1.125; margin:0 auto 18px !important; text-align:center; max-width:920px; letter-spacing:0; }
+      .essay-title{ color:var(--ink) !important; font-family:'Francois One',Impact,'Arial Narrow',sans-serif; font-size:3rem; font-weight:600; line-height:1.125; margin:0 auto 18px !important; text-align:center; max-width:920px; letter-spacing:0; }
       .essay-title .dot{ color:var(--orange); }
       .essay-dek{ max-width:760px; margin:0 auto 28px; color:#33384d; font-size:1.2rem; line-height:1.55; text-align:center; }
       .lead-block{ border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:24px 0; margin:6px 0 30px; }
