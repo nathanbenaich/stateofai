@@ -352,7 +352,7 @@
         {
           heading: "What can AI research agents already do?",
           body: [
-            linked("AI systems have moved beyond summarizing papers. Google's AI co-scientist generated hypotheses and experimental protocols; Stanford's Virtual Lab coordinated an AI principal investigator and specialist agents; Sakana AI's AI Scientist-v2 ran machine-learning experiments and wrote the resulting paper.", [
+            linked("Google's AI co-scientist generated hypotheses and experimental protocols; Stanford's Virtual Lab coordinated an AI principal investigator and specialist agents; Sakana AI's AI Scientist-v2 ran machine-learning experiments and wrote the resulting paper.", [
               { text: "AI co-scientist", url: SOURCES.aiCoScientist },
               { text: "Virtual Lab", url: SOURCES.virtualLab },
               { text: "AI Scientist-v2", url: SOURCES.aiScientist }
@@ -369,7 +369,7 @@
             linked("The 2025 State of AI Report argued that AI was becoming a scientific collaborator, then made the stronger prediction: an open-ended agent would make a meaningful discovery across hypothesis, experiment, and paper.", [
               { text: "2025 State of AI Report", url: SOURCES.state2025 }
             ]),
-            "We have been wrong on this ladder before, which is why the rungs matter. In 2023 we predicted self-improving agents would crush state of the art in a complex environment, and graded ourselves a miss. In 2024 we predicted an AI-generated paper would clear a major conference or workshop, and it did. The 2025 call is the next rung up, and the wording is deliberately strict: a writing assistant is not a scientist, and an agent that optimizes a predefined benchmark has not chosen a scientific question. The call is about ownership of the loop, not fluent output at the end of it."
+            "We have made versions of this call before. In 2023 we predicted self-improving agents would crush state of the art in a complex environment, and graded ourselves a miss. In 2024 we predicted an AI-generated paper would clear a major conference or workshop, and it did. The 2025 call raises the bar again, and the wording is deliberately strict: a writing assistant is not a scientist, and an agent that optimizes a predefined benchmark has not chosen a scientific question. The call is about ownership of the loop, not fluent output at the end of it."
           ]
         },
         {
@@ -383,14 +383,14 @@
           heading: "Why does the end-to-end test matter?",
           body: [
             "If an agent can close the loop, scientific AI stops being mainly a productivity tool. Parts of the scientific method become delegable.",
-            "The scarce resource then shifts from literature coverage and coding speed toward question selection, experimental access, validation, and systems that can recognize when their own result is weak. That is a much larger change than automating a lab task."
+            "What matters then is no longer literature coverage or coding speed. It is question selection, experimental access, validation, and whether a system can tell when its own result is weak. That is a much larger change than automating a lab task."
           ]
         },
         {
           heading: "What we are watching now",
           body: [
             "We are watching agentic lab systems that connect literature review, experimental planning, analysis, and revision rather than optimizing one isolated step, particularly in biology, chemistry, and materials, where experimental access is the bottleneck.",
-            "The decisive signals will be papers that credit models for validated hypotheses or experimental choices, plus evaluations that test long-horizon research instead of static scientific question answering. This prediction is graded in the State of AI Report 2026, publishing in October."
+            "Look for papers that credit models for validated hypotheses or experimental choices, and for evaluations that test long-horizon research instead of static scientific question answering. This prediction is graded in the State of AI Report 2026, publishing in October."
           ]
         }
       ],
