@@ -46,9 +46,10 @@ Colors: Deployed `#161E59`, Installing `#154ee3`, Announced `#F2A65A`; line pale
 
 ## 4. Definitions & rules (keep these consistent every month)
 
-- Counts are **NVIDIA data-center GPUs**. GH200/GB200/GB300 count as GPU dies; one NVL72 rack = 72 GPUs.
+- Counts are **NVIDIA data-center GPUs**. GH200/GB200/GB300 count as GPU dies; one Grace-Blackwell NVL72 rack = 72 GPUs.
+- **Vera Rubin (VR200) counts dies, and the rack name lies.** NVIDIA renamed the rack from NVL144 (die-based) to NVL72 (package-based) at CES 2026 — same hardware. One VR200 NVL72 rack = 72 Rubin GPU packages = **144 GPU dies** = 36 Vera CPUs. Store dies (racks × 144), because "GPU" flipped meaning mid-roadmap: 2025 materials counted dies (NVL144, NVL576), 2026 materials count packages. A bare "N Rubin GPUs" quote is therefore ambiguous by 2× — record the source's unit and **hold the row** until it is confirmed. Never count Vera CPUs toward GPU totals; a superchip = 2 packages = 4 dies. Rubin Ultra ("Kyber", 2027) gets the same die treatment. Rubin CPX was cancelled at GTC 2026 (replaced by Groq 3 LPX) — zero units, and the LPX is a separate non-GPU accelerator, excluded from Rubin counts.
 - **Status tiers:** Deployed (operating) / Installing (racked or energising) / Announced (committed, not installed). Only Deployed is live capacity.
-- **Count by owner/operator.** Renters (OpenAI, Anthropic, startups) belong in the `demand` chart, never added on top of the cloud/host that owns the silicon (avoids double-counting).
+- **Count by owner/operator.** Renters (OpenAI, Anthropic, startups) belong in the `demand` chart, never added on top of the cloud/host that owns the silicon (avoids double-counting). This bites hardest on Rubin-era deals, which are mostly announced as GW or dollars by the *renter* (OpenAI–NVIDIA, Anthropic–Azure, Nebius–Meta): those go to `demand` only, and must not be re-counted as fleet rows when the host later discloses silicon.
 - National-HPC counts are exact (published); company/neocloud/sovereign figures are estimates or announced commitments — label them, and **never invent a count** where the source doesn't disclose one.
 - China = export-variant parts (H20/H800/A800) → keep in the sources callout, not in the main bars.
 
@@ -73,6 +74,7 @@ Run all from the **repo root**.
 - `validate_data.mjs` — **the verifier gate.** `node compute/scripts/validate_data.mjs` checks the `DATA` object against the §4 rules (schema, no negatives, stacked bars sorted desc by total, tier names/colors, research_topic sort + sign colors, and the renter double-count rule). Exit 0 = safe to open the PR; exit 1 = a gate failed, don't publish. Run it after every data edit and as the loop's gate (§10).
 - `snapshot_data.py` — snapshot the current `DATA` object into `compute/data-history/<YYYY-MM>.json` (run last, after editing `compute-charts.js`).
 - `data-reference-2026-06.md` — the full June 2026 dataset: every operator, count, tier, and source, with the double-count register. Use as the baseline to diff against next month.
+- `rubin-research-2026-08.md` — Vera Rubin scoping sweep (Aug 2026): candidate rows, adoption-signals-without-counts, the GW-only deals, the supply-side timeline, and the re-check triggers. **No Rubin chart yet** — revisit at the October refresh; two research slices (sovereign HPC, enterprise/telco) still need re-running.
 - `citation-data.json`, `research-topic-data.json` — Zeta Alpha extracts (shape reference for step 2; values as of the Oct 2025 report).
 - `../data-history/` — version history of the chart data: one `<YYYY-MM>.json` snapshot per refresh plus `CHANGELOG.md`. See `../data-history/README.md`.
 
