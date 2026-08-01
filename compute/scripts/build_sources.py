@@ -31,7 +31,7 @@ A100 = [
  ("Gadi (NCI) — 16", "NCI", "https://nci.org.au/infrastructure/hpc-systems"),
 ]
 HOPPER = [
- ("xAI Colossus 1 — 200,000 (150k H100 + 50k H200)", "Data Center Dynamics; SemiAnalysis", "https://www.datacenterdynamics.com/en/news/anthropic-to-use-all-of-spacex-xais-colossus-1-data-center-compute/"),
+ ("SpaceXAI Colossus 1 — 200,000 (150k H100 + 50k H200)", "Data Center Dynamics; SemiAnalysis", "https://www.datacenterdynamics.com/en/news/anthropic-to-use-all-of-spacex-xais-colossus-1-data-center-compute/"),
  ("Tesla Cortex — ~66,000 (H100-equivalent)", "Tesla shareholder deck / 8-K", "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001318605&type=8-K"),
  ("Meta GenAI clusters — 49,152 (2x 24,576 H100)", "Meta Engineering blog", "https://engineering.fb.com/2024/03/12/data-center-engineering/building-metas-genai-infrastructure/"),
  ("CoreWeave (one cluster) — 42,000 H200", "Epoch AI; The Next Platform", "https://epoch.ai/data/gpu_clusters.csv"),
@@ -47,8 +47,10 @@ HOPPER = [
  ("Venado (LANL) — 2,560 GH200", "Top500", "https://top500.org/system/180246/"),
  ("Israel-1 (NVIDIA) — 2,048 H100", "NVIDIA", "https://blogs.nvidia.com/blog/israel-1-performance/"),
  ("NSCC ASPIRE 2B (Singapore) — 1,536 H200", "NSCC", "https://www.nscc.sg/aspire-2b/"),
+ ("Gefion (DCAI, Denmark) — 1,528 H100", "NVIDIA; Novo Nordisk Foundation (DCAI is owner: NNF 85% / EIFO 15%)", "https://blogs.nvidia.com/blog/denmark-sovereign-ai-supercomputer"),
  ("Jean Zay (IDRIS) — 1,456 H100", "IDRIS", "http://www.idris.fr/eng/jean-zay/modifications-extension-jean-zay-h100-eng.html"),
- ("Leonardo LISA upgrade (CINECA) — 1,328 H100 (installing)", "EuroHPC JU", "https://www.eurohpc-ju.europa.eu/"),
+ ("Leonardo LISA upgrade (CINECA) — 1,328 H100, 166 8-way servers (installing; inaugurated 11 Jun 2026, user availability expected summer 2026)", "EuroHPC JU", "https://www.eurohpc-ju.europa.eu/inauguration-sol-new-quantum-computer-together-lisa-upgrade-leonardo-supercomputer-2026-06-11_en"),
+ ("DeltaAI (NCSA) — 608 GH200", "NCSA Delta documentation", "https://delta.ncsa.illinois.edu/deltaai-hardware-and-network/"),
 ]
 BWELL = [
  ("Deutsche Telekom Industrial AI Cloud (Munich) — up to 10,000 B200", "Deutsche Telekom", "https://www.telekom.com/en/media/media-information/archive/ai-sovereignty-for-germany-and-europe-1098708"),
@@ -56,7 +58,9 @@ BWELL = [
  ("Naver Cloud — 4,000 B200 (deployed)", "Data Center Dynamics", "https://www.datacenterdynamics.com/en/news/naver-cloud-completes-cluster-of-4000-nvidia-b200-gpus-in-south-korea/"),
  ("E2E Networks (India) — 1,024 B200", "E2E Networks", "https://www.e2enetworks.com/blog/b200-live-blog"),
  ("SK Telecom Haein — >1,000 B200", "Data Center Dynamics", "https://www.datacenterdynamics.com/en/news/sk-telecom-launches-gpuaas-based-on-nvidia-b200-cluster-in-south-korea/"),
- ("IREN — 50,000 B300 (announced/ordered)", "IREN; SEC filings", "https://investors.iren.com/"),
+ ("IREN — 50,000+ B300 (announced; purchase agreements, phased delivery through H2 2026)", "IREN", "https://iren.com/resources/news/iren-expands-ai-cloud-capacity-to-150000-gpus"),
+ ("Yotta D2 (Greater Noida, India) — 20,736 HGX B300 (announced; go-live targeted Aug 2026)", "Yotta", "https://yotta.com/press-releases/yotta-to-deploy-20000-nvidia-blackwell-ultra-gpus/"),
+ ("Eli Lilly (LillyPod, Indianapolis) — 1,016 B300 (DGX SuperPOD, deployed)", "NVIDIA", "https://blogs.nvidia.com/blog/lilly-ai-factory-live"),
  ("Cloud GA instances (Google A4, AWS P6, Azure, Lambda, RunPod, DataCrunch)", "Vendor product pages; counts not disclosed", None),
 ]
 GBWELL = [
@@ -64,13 +68,13 @@ GBWELL = [
  ("HUMAIN (Saudi) — 18,000 GB300 phase 1 / up to 600,000", "NVIDIA newsroom; Middle East AI News", "https://nvidianews.nvidia.com/news/humain-and-nvidia-announce-strategic-partnership-to-build-ai-factories-of-the-future-in-saudi-arabia"),
  ("South Korea (national) — 260,000 Blackwell (announced)", "NVIDIA newsroom", "https://nvidianews.nvidia.com/news/south-korea-ai-infrastructure"),
  ("Nscale to Microsoft — 200,000 GB300 (announced)", "Nscale", "https://www.nscale.com/press-releases/nscale-microsoft-2025"),
- ("xAI Colossus 2 — ~110,000 GB200 (installing)", "SemiAnalysis", "https://newsletter.semianalysis.com/p/xais-colossus-2-first-gigawatt-datacenter"),
+ ("SpaceXAI Colossus 2 — ~110,000 GB200 (installing)", "SemiAnalysis", "https://newsletter.semianalysis.com/p/xais-colossus-2-first-gigawatt-datacenter"),
  ("Stargate Norway (Nscale/Aker) — 100,000 (announced)", "Nscale", "https://www.nscale.com/press-releases/stargate-norway-nscale-aker-openai"),
  ("Argonne Solstice + Equinox (DOE) — 100,000 + 10,000 Blackwell", "NVIDIA newsroom", "https://nvidianews.nvidia.com/news/nvidia-oracle-us-department-of-energy-ai-supercomputer-scientific-discovery"),
  ("Together / Hypertec — 36,000 GB200", "Together AI", "https://www.together.ai/blog/nvidia-gb200-together-gpu-cluster-36k"),
  ("ByteDance (Malaysia, offshore) — 36,000 GB200", "Tom's Hardware", "https://www.tomshardware.com/pc-components/gpus/chinas-bytedance-to-access-36-000-blackwell-gpu-cluster-through-malaysia-cloud-operator"),
  ("Stargate UAE / G42 — 35,000 GB300 (installing)", "OpenAI", "https://openai.com/index/introducing-stargate-uae/"),
- ("xAI Colossus 1 — 30,000 GB200", "SemiAnalysis", "https://newsletter.semianalysis.com/p/xais-colossus-2-first-gigawatt-datacenter"),
+ ("SpaceXAI Colossus 1 — 30,000 GB200", "SemiAnalysis", "https://newsletter.semianalysis.com/p/xais-colossus-2-first-gigawatt-datacenter"),
  ("AWS Project Ceiba — 20,736 GB200 (288 NVL72 racks)", "AWS; Data Center Dynamics", "https://www.datacenterdynamics.com/en/news/aws-upgrades-project-ceiba-to-feature-20736-nvidia-blackwell-gpus-boosting-power-6x-to-414-ai-exaflops/"),
  ("UK Nebius/Nscale — 14,000 Blackwell (announced)", "NVIDIA newsroom", "https://nvidianews.nvidia.com/news/europe-ai-infrastructure"),
  ("CoreWeave — 8,192 GB300 NVL72 (deployed; MLPerf Training v6.0)", "CoreWeave", "https://www.coreweave.com/news/coreweave-sets-new-ai-training-records-in-mlperf-r-training-v6-0-training-deepseek-v3-in-approximately-two-minutes"),
@@ -79,6 +83,7 @@ GBWELL = [
  ("Taiwan Foxconn 'Big Innovation' — 10,000 GB300 (announced)", "NVIDIA newsroom", "https://nvidianews.nvidia.com/news/foxconn-builds-ai-factory-in-partnership-with-taiwan-and-nvidia"),
  ("IT4LIA AI Factory (Bologna) — 8,000+ GB200 NVL4 (announced)", "EuroHPC JU", "https://www.eurohpc-ju.europa.eu/eurohpc-ju-signs-contract-boost-ai-capabilities-it4lia-ai-factory-2026-04-22_en"),
  ("Microsoft Azure NDv6 GB300 — 4,608 (for OpenAI)", "NVIDIA newsroom", "https://blogs.nvidia.com/blog/microsoft-azure-worlds-first-gb300-nvl72-supercomputing-cluster-openai/"),
+ ("Jane Street — 4,032 GB300 (56x GB300 NVL72, owned Texas facility; deployed)", "NVIDIA AI Infrastructure", "https://x.com/NVIDIADC/status/2056419748225691802"),
  ("Microsoft Azure NDv6 GB200 — ~4,000", "Microsoft Azure blog", "https://azure.microsoft.com/en-us/blog/microsoft-and-nvidia-accelerate-ai-development-and-performance/"),
  ("HIVE / BUZZ HPC (Canada, Bell/Cohere) — 2,304 GB200", "HIVE Digital", "https://www.stocktitan.net/news/HIVE/"),
  ("Indosat (Indonesia) — 2,304 GB200", "Tom's Hardware", "https://www.tomshardware.com/"),
@@ -90,10 +95,12 @@ DEMAND = [
  ("OpenAI — Microsoft Azure $250B; AWS $38B; CoreWeave $22.4B", "CNBC ($1T AI deals guide)", "https://www.cnbc.com/2025/10/15/a-guide-to-1-trillion-worth-of-ai-deals-between-openai-nvidia.html"),
  ("OpenAI — AMD 6 GW / MI450 (non-NVIDIA)", "OpenAI; TechCrunch", "https://openai.com/index/openai-amd-strategic-partnership/"),
  ("OpenAI — Broadcom 10 GW / custom 'Jalapeño' ASIC (non-NVIDIA)", "OpenAI / Broadcom; CNBC (24 Jun 2026)", "https://www.cnbc.com/2026/06/24/openai-and-broadcom-reveal-jalapeno-first-ai-chip-in-partnership.html"),
+ ("OpenAI — Cerebras 750 MW wafer-scale (non-NVIDIA; signed 14 Jan 2026)", "Cerebras", "https://www.cerebras.ai/blog/openai-partners-with-cerebras-to-bring-high-speed-inference-to-the-mainstream"),
  ("Anthropic — Google up to 1M TPU / 3.5-5 GW (non-NVIDIA)", "Anthropic", "https://www.anthropic.com/news/expanding-our-use-of-google-cloud-tpus-and-services"),
  ("Anthropic — AWS Project Rainier ~500k-1M Trainium2 (non-NVIDIA)", "Anthropic", "https://www.anthropic.com/news/anthropic-invests-50-billion-in-american-ai-infrastructure"),
  ("Anthropic — Microsoft Azure + NVIDIA $30B / up to 1 GW", "Microsoft / NVIDIA / Anthropic announcements", None),
- ("Anthropic — xAI Colossus 1 lease ~220,000 GPUs ($1.25B/mo)", "Data Center Dynamics", "https://www.datacenterdynamics.com/en/news/anthropic-to-use-all-of-spacex-xais-colossus-1-data-center-compute/"),
+ ("Anthropic — AMD up to 2 GW / MI450 (non-NVIDIA; 22 Jul 2026, AMD equity up to $5B, deploys from H1 2027)", "AMD investor relations", "https://ir.amd.com/news-events/press-releases/detail/1292/amd-and-anthropic-announce-strategic-partnership-to-deploy-up-to-2-gigawatts-of-amd-instinct-mi450-series-gpus"),
+ ("Anthropic — SpaceXAI (Colossus 1) lease ~220,000 GPUs ($1.25B/mo)", "Data Center Dynamics", "https://www.datacenterdynamics.com/en/news/anthropic-to-use-all-of-spacex-xais-colossus-1-data-center-compute/"),
  ("Microsoft (offtaker) — Nscale 200k GB300; IREN 200 MW/$9.7B; Lambda; Nebius; Crusoe 900 MW", "Operator press releases", None),
  ("Meta (offtaker) — CoreWeave $35.2B; Nebius up to $27B", "The Globe and Mail; press", "https://www.theglobeandmail.com/investing/markets/stocks/MSFT/pressreleases/1244844/coreweave-inks-21b-ai-infrastructure-deal-with-meta-platforms/"),
  ("Startups (Cohere/Runway->CoreWeave; Thinking Machines/World Labs->Google Cloud; Reka/Suno->Oracle; Sarvam->Yotta 4,096 H100; Upstage->SKT ~500 B200; Inflection->CoreWeave 22k legacy)", "Respective cloud case studies / press", None),
@@ -116,7 +123,7 @@ for title, items in charts:
         body_items.append(li(*it))
     body_items.append('</ul>')
 
-intro = '''<p>This page documents the source for each data point in the State of AI Report Compute Index charts. Data cutoff: <b>1 July 2026</b>. GPU-count charts show NVIDIA data-center GPUs (GH200/GB200/GB300 counted as GPU dies; one NVL72 rack = 72 GPUs), split into <b>Deployed / Installing / Announced</b>. Figures are charted by owner/operator; renters are listed separately under the demand-side chart and are not double-counted. National-HPC counts are exact (published); large company, neocloud and sovereign figures are best-available estimates or announced commitments. Where a primary source did not disclose a GPU count, none is invented.</p>'''
+intro = '''<p>This page documents the source for each data point in the State of AI Report Compute Index charts. Data cutoff: <b>1 August 2026</b>. GPU-count charts show NVIDIA data-center GPUs (GH200/GB200/GB300 counted as GPU dies; one NVL72 rack = 72 GPUs), split into <b>Deployed / Installing / Announced</b>. Figures are charted by owner/operator; renters are listed separately under the demand-side chart and are not double-counted. National-HPC counts are exact (published); large company, neocloud and sovereign figures are best-available estimates or announced commitments. Where a primary source did not disclose a GPU count, none is invented.</p>'''
 
 page = f'''<!DOCTYPE html>
 <html lang="en">
